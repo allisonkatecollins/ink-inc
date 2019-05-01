@@ -9,7 +9,7 @@ namespace InkInc.Models
     public class Parlor
     {
         [Required]
-        public int Id { get; set; }
+        public int ParlorId { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -33,10 +33,10 @@ namespace InkInc.Models
         }
 
         [Required]
-        public int OpenTime { get; set; }
+        public string OpenTime { get; set; }
 
         [Required]
-        public int CloseTime { get; set; }
+        public string CloseTime { get; set; }
 
         [Required]
         public string DaysOpen { get; set; }
@@ -50,6 +50,9 @@ namespace InkInc.Models
             }
         }
 
-        public User User { get; set; }
+        [Required]
+        public int OwnerId { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
     }
 }
