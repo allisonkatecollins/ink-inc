@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using InkInc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using InkInc.Models;
 
 namespace InkInc
 {

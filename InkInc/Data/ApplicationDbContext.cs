@@ -17,7 +17,8 @@ namespace InkInc.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        User user = new User {
+        base.OnModelCreating(modelBuilder);
+        User allison = new User {
             FirstName = "Allison",
             LastName = "Collins",
             Email = "allisonkatecollins@gmail.com",
@@ -32,10 +33,10 @@ namespace InkInc.Data
             SecurityStamp = Guid.NewGuid ().ToString ("D")
         };
         var passwordHash = new PasswordHasher<User> ();
-        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
-        modelBuilder.Entity<User> ().HasData (user);
+        allison.PasswordHash = passwordHash.HashPassword (allison, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (allison);
         
-        User user = new User {
+        User asia = new User {
             FirstName = "Asia",
             LastName = "Carter",
             Email = "asiacarter@gmail.com",
@@ -49,11 +50,11 @@ namespace InkInc.Data
             LockoutEnabled = false,
             SecurityStamp = Guid.NewGuid ().ToString ("D")
         };
-        var passwordHash = new PasswordHasher<User> ();
-        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
-        modelBuilder.Entity<User> ().HasData (user);
+        passwordHash = new PasswordHasher<User> ();
+        asia.PasswordHash = passwordHash.HashPassword (asia, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (asia);
         
-        User user = new User {
+        User brittany = new User {
             FirstName = "Brittany",
             LastName = "Ramos-Janeway",
             Email = "brj@gmail.com",
@@ -67,11 +68,11 @@ namespace InkInc.Data
             LockoutEnabled = false,
             SecurityStamp = Guid.NewGuid ().ToString ("D")
         };
-        var passwordHash = new PasswordHasher<User> ();
-        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
-        modelBuilder.Entity<User> ().HasData (user);
+        passwordHash = new PasswordHasher<User> ();
+        brittany.PasswordHash = passwordHash.HashPassword (brittany, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (brittany);
         
-        User user = new User {
+        User mary = new User {
             FirstName = "Mary",
             LastName = "Remo",
             Email = "maryremo@gmail.com",
@@ -85,14 +86,14 @@ namespace InkInc.Data
             LockoutEnabled = false,
             SecurityStamp = Guid.NewGuid ().ToString ("D")
         };
-        var passwordHash = new PasswordHasher<User> ();
-        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
-        modelBuilder.Entity<User> ().HasData (user);
+        passwordHash = new PasswordHasher<User> ();
+        mary.PasswordHash = passwordHash.HashPassword (mary, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (mary);
         
         modelBuilder.Entity<Parlor> ().HasData (
             new Parlor () {
                 ParlorId = 1,
-                    OwnerId = user.Id,
+                    OwnerId = allison.Id,
                     Name = "Black Dahlia Studios",
                     StreetAddress = "1200 Forest Ave",
                     City = "Nashville",
@@ -103,7 +104,7 @@ namespace InkInc.Data
             },
             new Parlor () {
                 ParlorId = 2,
-                    OwnerId = user.Id,
+                    OwnerId = mary.Id,
                     Name = "Electric Hand",
                     StreetAddress = "300 Rainbow Dr",
                     City = "Nashville",

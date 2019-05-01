@@ -51,7 +51,7 @@ namespace InkInc.Models
         }
 
         [Required]
-        public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }
