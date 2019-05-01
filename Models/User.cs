@@ -12,9 +12,6 @@ namespace InkInc.Models
     public class User : IdentityUser
     {
         [Required]
-        public string Password { get; set; }
-
-        [Required]
         public string FirstName { get; set; }
 
         [Required]
@@ -24,11 +21,15 @@ namespace InkInc.Models
         
         public int PricePerHour { get; set; }
 
-        public string SocialMedia { get; set; }
+        public string InstagramHandle { get; set; }
 
         public string Biography { get; set; }
 
+        public int ParlorId { get; set; }
+
         public Parlor Parlor { get; set; }
+
+        public virtual ICollection<Photo> Photos { get; set; }
 
         public string FullName
         {

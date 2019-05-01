@@ -9,8 +9,10 @@ namespace InkInc.Models
     {
         public int Id { get; set; }
          
-        public string Description { get; set; }
+        public string FilePath { get; set; }
 
         public bool IsDisplayPhoto { get; set; }
+
+        public int UserId { get; set; }
     }
 }

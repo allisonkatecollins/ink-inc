@@ -13,14 +13,74 @@ namespace InkInc.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<User> User { get; set; }
         public DbSet<Parlor> Parlor { get; set; }
+        public DbSet<Photo> Photo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         User user = new User {
-            FirstName = "admin",
-            LastName = "admin",
-            Email = "admin@admin.com",
-            NormalizedEmail = "ADMIN@ADMIN.COM",
+            FirstName = "Allison",
+            LastName = "Collins",
+            Email = "allisonkatecollins@gmail.com",
+            NormalizedEmail = "ALLISONKATECOLLINS@GMAIL.COM",
+            BaselinePricing = 50,
+            PricePerHour = 40,
+            InstagramHandle = "@allisonkatecollins",
+            Biography = "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.",
+            ParlorId = 1,
+            EmailConfirmed = true,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid ().ToString ("D")
+        };
+        var passwordHash = new PasswordHasher<User> ();
+        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (user);
+        
+        User user = new User {
+            FirstName = "Asia",
+            LastName = "Carter",
+            Email = "asiacarter@gmail.com",
+            NormalizedEmail = "ASIACARTER@GMAIL.COM",
+            BaselinePricing = 60,
+            PricePerHour = 50,
+            InstagramHandle = "@asiacarter",
+            Biography = "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.",
+            ParlorId = 1,
+            EmailConfirmed = true,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid ().ToString ("D")
+        };
+        var passwordHash = new PasswordHasher<User> ();
+        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (user);
+        
+        User user = new User {
+            FirstName = "Brittany",
+            LastName = "Ramos-Janeway",
+            Email = "brj@gmail.com",
+            NormalizedEmail = "BRJ@GMAIL.COM",
+            BaselinePricing = 25,
+            PricePerHour = 50,
+            InstagramHandle = "@itsbrittany",
+            Biography = "I specialize in black-and-white tattoos of capybaras.",
+            ParlorId = 2,
+            EmailConfirmed = true,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid ().ToString ("D")
+        };
+        var passwordHash = new PasswordHasher<User> ();
+        user.PasswordHash = passwordHash.HashPassword (user, "Admin8*");
+        modelBuilder.Entity<User> ().HasData (user);
+        
+        User user = new User {
+            FirstName = "Mary",
+            LastName = "Remo",
+            Email = "maryremo@gmail.com",
+            NormalizedEmail = "MARYREMO@GMAIL.COM",
+            BaselinePricing = 100,
+            PricePerHour = 60,
+            InstagramHandle = "@sodajerk",
+            Biography = "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.",
+            ParlorId = 2,
             EmailConfirmed = true,
             LockoutEnabled = false,
             SecurityStamp = Guid.NewGuid ().ToString ("D")
