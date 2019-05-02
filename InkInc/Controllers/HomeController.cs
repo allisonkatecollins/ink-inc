@@ -5,14 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using InkInc.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using InkInc.Data;
 
 namespace InkInc.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        // GET: User
+        public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _context.User.Include(u => u.Parlor);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         public IActionResult Privacy()
