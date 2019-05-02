@@ -1,0 +1,57 @@
+﻿@model InkInc.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.FullName)</h1>
+<h4><a asp-action="Details" asp-route-id="">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
+
+<hr />
+
+<div>
+    @Html.DisplayFor(model => model.Biography)
+</div>
+
+<hr />
+
+<h4>Contact</h4>
+<div>
+    <dl class="row">
+        <dt class = "col-sm-10">
+            Set up a consultation:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-10">
+            Find me on Instagram:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InstagramHandle)
+        </dd>
+    </dl>
+</div>
+
+<hr />
+
+<h4>Pricing</h4>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BaselinePricing)
+        </dt>
+        <dd class="col-sm-10">
+            $@Html.DisplayFor(model => model.BaselinePricing)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PricePerHour)
+        </dt>
+        <dd class="col-sm-10">
+            $@Html.DisplayFor(model => model.PricePerHour)/hour
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

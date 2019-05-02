@@ -100,6 +100,7 @@ namespace InkInc.Data
                     State = "Tennessee",
                     OpenTime = "9:00 AM",
                     CloseTime = "6:00 PM",
+                    PhoneNumber = "(615)-555-5555",
                     DaysOpen = "Monday - Saturday"
             },
             new Parlor () {
@@ -111,6 +112,7 @@ namespace InkInc.Data
                     State = "Tennessee",
                     OpenTime = "10:00 AM",
                     CloseTime = "8:00 PM",
+                    PhoneNumber = "(615)-555-5555",
                     DaysOpen = "Tuesday - Saturday"
             }
         );

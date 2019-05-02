@@ -17,8 +17,10 @@ namespace InkInc.Models
         [Required]
         public string LastName { get; set; }
 
+        [Display(Name = "Baseline price")]
         public int BaselinePricing { get; set; }
-        
+
+        [Display(Name = "Price per hour")]
         public int PricePerHour { get; set; }
 
         public string InstagramHandle { get; set; }

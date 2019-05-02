@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InkInc.Migrations
 {
-    public partial class SeedData : Migration
+    public partial class ParlorDetails : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,7 +35,8 @@ namespace InkInc.Migrations
                     OpenTime = table.Column<string>(nullable: false),
                     CloseTime = table.Column<string>(nullable: false),
                     DaysOpen = table.Column<string>(nullable: false),
-                    OwnerId = table.Column<string>(nullable: false)
+                    OwnerId = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -210,23 +211,23 @@ namespace InkInc.Migrations
 
             migrationBuilder.InsertData(
                 table: "Parlor",
-                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "OwnerId", "State", "StreetAddress" },
-                values: new object[] { 1, "Nashville", "6:00 PM", "Monday - Saturday", "Black Dahlia Studios", "9:00 AM", "044549c2-53ed-4010-b33a-6d5e547fdc1b", "Tennessee", "1200 Forest Ave" });
+                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "OwnerId", "PhoneNumber", "State", "StreetAddress" },
+                values: new object[] { 1, "Nashville", "6:00 PM", "Monday - Saturday", "Black Dahlia Studios", "9:00 AM", "a1f81af0-5180-4887-b535-8ab6cfd01dcb", "(615)-555-5555", "Tennessee", "1200 Forest Ave" });
 
             migrationBuilder.InsertData(
                 table: "Parlor",
-                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "OwnerId", "State", "StreetAddress" },
-                values: new object[] { 2, "Nashville", "8:00 PM", "Tuesday - Saturday", "Electric Hand", "10:00 AM", "80c13867-7a98-490f-be60-c1dc42e4ff11", "Tennessee", "300 Rainbow Dr" });
+                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "OwnerId", "PhoneNumber", "State", "StreetAddress" },
+                values: new object[] { 2, "Nashville", "8:00 PM", "Tuesday - Saturday", "Electric Hand", "10:00 AM", "37c6bf90-023c-4b10-b435-2e61cb4d9151", "(615)-555-5555", "Tennessee", "300 Rainbow Dr" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BaselinePricing", "Biography", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "InstagramHandle", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "ParlorId", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PricePerHour", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "044549c2-53ed-4010-b33a-6d5e547fdc1b", 0, 50, "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.", "953fb940-ad8d-4584-9494-32d9ea2271b0", "allisonkatecollins@gmail.com", true, "Allison", "@allisonkatecollins", "Collins", false, null, "ALLISONKATECOLLINS@GMAIL.COM", null, 1, "AQAAAAEAACcQAAAAEPo6FsybYFI8+HHPNUbGlLjKLlGAD58ZARdUkCFODXpq5WesL6dzpTHDDI4+zb7vow==", null, false, 40, "418b87d8-50a4-4a3d-b3fa-790e65c1dc14", false, null },
-                    { "1e07b7c0-9124-482d-9221-6f82499210e8", 0, 60, "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.", "29b65f95-6c7b-451a-bea4-dbb9d7c6d229", "asiacarter@gmail.com", true, "Asia", "@asiacarter", "Carter", false, null, "ASIACARTER@GMAIL.COM", null, 1, "AQAAAAEAACcQAAAAEBE9gh2NbtbTr9QS0bfaKpUcdAqoum1SM5i7l/SDi9dI+yuXds0oY45aTj/s7/jP0g==", null, false, 50, "481fd50c-66ca-48d1-b5f8-d132dd0c6e38", false, null },
-                    { "4fb5bd44-8924-4cf4-ada6-30ebbda6985b", 0, 25, "I specialize in black-and-white tattoos of capybaras.", "df32e232-25f4-4ccf-9819-2852862602d0", "brj@gmail.com", true, "Brittany", "@itsbrittany", "Ramos-Janeway", false, null, "BRJ@GMAIL.COM", null, 2, "AQAAAAEAACcQAAAAEKqC46W/m5Ff7zWngapTe6krE58IgeNnNxnZ0e153/nZHWvQOn/EmW05FHACQhfWdQ==", null, false, 50, "1dec5e0a-1e75-453e-9757-d81813479c17", false, null },
-                    { "80c13867-7a98-490f-be60-c1dc42e4ff11", 0, 100, "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.", "7d989da4-69f1-4070-afdb-502f87881376", "maryremo@gmail.com", true, "Mary", "@sodajerk", "Remo", false, null, "MARYREMO@GMAIL.COM", null, 2, "AQAAAAEAACcQAAAAEPDNS0z314j9VhMftUKdess+mljLjZ0W2Vowm94UIFzsw9+TL37FBaT+9IAek1t/9A==", null, false, 60, "00f2376b-0530-4377-9978-d91b1a0625a0", false, null }
+                    { "a1f81af0-5180-4887-b535-8ab6cfd01dcb", 0, 50, "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.", "9f176ece-ce4a-4caf-b778-a2bd56229bfc", "allisonkatecollins@gmail.com", true, "Allison", "@allisonkatecollins", "Collins", false, null, "ALLISONKATECOLLINS@GMAIL.COM", null, 1, "AQAAAAEAACcQAAAAEMtauPuWw8GfJOeIu+oMLlZyxUWjXO3VuaWjMrv+KXhno8zzsktvN+Ywd/bvTnkr1g==", null, false, 40, "3216a62c-4791-43e7-a1de-469b00d40b57", false, null },
+                    { "22ac3c15-5125-4216-9c2f-1056565ab1c6", 0, 60, "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.", "8090f9f5-e8f1-45d2-903e-790e88fd638e", "asiacarter@gmail.com", true, "Asia", "@asiacarter", "Carter", false, null, "ASIACARTER@GMAIL.COM", null, 1, "AQAAAAEAACcQAAAAEIMZ3dwF2iZl4JahEltrzBgjWu+BhQXlFqBwyrmTrJDKxzjH7sOG6AG6IdPhFK45Hg==", null, false, 50, "10e5d482-3c2a-4a21-9323-7be15d75c7e1", false, null },
+                    { "38ba5fa5-675f-4b92-a74b-f433f3c595c4", 0, 25, "I specialize in black-and-white tattoos of capybaras.", "8c6d2116-31f8-4d3b-b2f8-0c6e4032c073", "brj@gmail.com", true, "Brittany", "@itsbrittany", "Ramos-Janeway", false, null, "BRJ@GMAIL.COM", null, 2, "AQAAAAEAACcQAAAAEFY3zck3tMQLbK5Jqh6tK6YDv1kUtjHV8bY+IGtQ5DaQ6kkVXIE03i4jw6NjSjTf0Q==", null, false, 50, "3ba7c9c0-e334-4939-add7-dbe72584c8a8", false, null },
+                    { "37c6bf90-023c-4b10-b435-2e61cb4d9151", 0, 100, "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.", "2b75fe06-7e53-4b0f-9a49-662d39eadfe9", "maryremo@gmail.com", true, "Mary", "@sodajerk", "Remo", false, null, "MARYREMO@GMAIL.COM", null, 2, "AQAAAAEAACcQAAAAEC/XTFYgfzDAMYLuf2RAsaVJl689/Xu5IpSxt+gcU4e8BfZjgjVbLc6E/4SZ41HRag==", null, false, 60, "8eee5ef5-608e-467b-968d-69e2d43c4b13", false, null }
                 });
 
             migrationBuilder.CreateIndex(

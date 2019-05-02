@@ -23,6 +23,15 @@ namespace InkInc.Models
         [Required]
         public string State { get; set; }
 
+        [Display(Name = "City")]
+        public string CityAndState
+        {
+            get
+            {
+                return $"{City}, {State}";
+            }
+        }
+
         [Display(Name = "Address")]
         public string FullAddress
         {
@@ -52,6 +61,9 @@ namespace InkInc.Models
 
         [Required]
         public string OwnerId { get; set; }
+
+        [Display(Name = "Contact Us")]
+        public string PhoneNumber { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }

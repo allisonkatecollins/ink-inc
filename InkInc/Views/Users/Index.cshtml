@@ -11,16 +11,13 @@
         @foreach (var item in Model) {
         <tr>
             <td>
-                <a asp-action="Details" asp-route-id="@item.FullName">@item.FullName</a>
+                <a asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Parlor.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Parlor.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parlor.State)
+                @Html.DisplayFor(modelItem => item.Parlor.CityAndState)
             </td>
         </tr>
                 }

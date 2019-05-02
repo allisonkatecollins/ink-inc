@@ -10,11 +10,11 @@ using InkInc.Models;
 
 namespace InkInc.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UserController(ApplicationDbContext context)
+        public UsersController(ApplicationDbContext context)
         {
             _context = context;
         }

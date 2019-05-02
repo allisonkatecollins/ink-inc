@@ -43,6 +43,8 @@ namespace InkInc.Migrations
                     b.Property<string>("OwnerId")
                         .IsRequired();
 
+                    b.Property<string>("PhoneNumber");
+
                     b.Property<string>("State")
                         .IsRequired();
 
@@ -62,7 +64,8 @@ namespace InkInc.Migrations
                             DaysOpen = "Monday - Saturday",
                             Name = "Black Dahlia Studios",
                             OpenTime = "9:00 AM",
-                            OwnerId = "044549c2-53ed-4010-b33a-6d5e547fdc1b",
+                            OwnerId = "a1f81af0-5180-4887-b535-8ab6cfd01dcb",
+                            PhoneNumber = "(615)-555-5555",
                             State = "Tennessee",
                             StreetAddress = "1200 Forest Ave"
                         },
@@ -74,7 +77,8 @@ namespace InkInc.Migrations
                             DaysOpen = "Tuesday - Saturday",
                             Name = "Electric Hand",
                             OpenTime = "10:00 AM",
-                            OwnerId = "80c13867-7a98-490f-be60-c1dc42e4ff11",
+                            OwnerId = "37c6bf90-023c-4b10-b435-2e61cb4d9151",
+                            PhoneNumber = "(615)-555-5555",
                             State = "Tennessee",
                             StreetAddress = "300 Rainbow Dr"
                         });
@@ -172,11 +176,11 @@ namespace InkInc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "044549c2-53ed-4010-b33a-6d5e547fdc1b",
+                            Id = "a1f81af0-5180-4887-b535-8ab6cfd01dcb",
                             AccessFailedCount = 0,
                             BaselinePricing = 50,
                             Biography = "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.",
-                            ConcurrencyStamp = "953fb940-ad8d-4584-9494-32d9ea2271b0",
+                            ConcurrencyStamp = "9f176ece-ce4a-4caf-b778-a2bd56229bfc",
                             Email = "allisonkatecollins@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Allison",
@@ -185,19 +189,19 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ALLISONKATECOLLINS@GMAIL.COM",
                             ParlorId = 1,
-                            PasswordHash = "AQAAAAEAACcQAAAAEPo6FsybYFI8+HHPNUbGlLjKLlGAD58ZARdUkCFODXpq5WesL6dzpTHDDI4+zb7vow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMtauPuWw8GfJOeIu+oMLlZyxUWjXO3VuaWjMrv+KXhno8zzsktvN+Ywd/bvTnkr1g==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 40,
-                            SecurityStamp = "418b87d8-50a4-4a3d-b3fa-790e65c1dc14",
+                            SecurityStamp = "3216a62c-4791-43e7-a1de-469b00d40b57",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "1e07b7c0-9124-482d-9221-6f82499210e8",
+                            Id = "22ac3c15-5125-4216-9c2f-1056565ab1c6",
                             AccessFailedCount = 0,
                             BaselinePricing = 60,
                             Biography = "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.",
-                            ConcurrencyStamp = "29b65f95-6c7b-451a-bea4-dbb9d7c6d229",
+                            ConcurrencyStamp = "8090f9f5-e8f1-45d2-903e-790e88fd638e",
                             Email = "asiacarter@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Asia",
@@ -206,19 +210,19 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ASIACARTER@GMAIL.COM",
                             ParlorId = 1,
-                            PasswordHash = "AQAAAAEAACcQAAAAEBE9gh2NbtbTr9QS0bfaKpUcdAqoum1SM5i7l/SDi9dI+yuXds0oY45aTj/s7/jP0g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIMZ3dwF2iZl4JahEltrzBgjWu+BhQXlFqBwyrmTrJDKxzjH7sOG6AG6IdPhFK45Hg==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 50,
-                            SecurityStamp = "481fd50c-66ca-48d1-b5f8-d132dd0c6e38",
+                            SecurityStamp = "10e5d482-3c2a-4a21-9323-7be15d75c7e1",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "4fb5bd44-8924-4cf4-ada6-30ebbda6985b",
+                            Id = "38ba5fa5-675f-4b92-a74b-f433f3c595c4",
                             AccessFailedCount = 0,
                             BaselinePricing = 25,
                             Biography = "I specialize in black-and-white tattoos of capybaras.",
-                            ConcurrencyStamp = "df32e232-25f4-4ccf-9819-2852862602d0",
+                            ConcurrencyStamp = "8c6d2116-31f8-4d3b-b2f8-0c6e4032c073",
                             Email = "brj@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Brittany",
@@ -227,19 +231,19 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BRJ@GMAIL.COM",
                             ParlorId = 2,
-                            PasswordHash = "AQAAAAEAACcQAAAAEKqC46W/m5Ff7zWngapTe6krE58IgeNnNxnZ0e153/nZHWvQOn/EmW05FHACQhfWdQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFY3zck3tMQLbK5Jqh6tK6YDv1kUtjHV8bY+IGtQ5DaQ6kkVXIE03i4jw6NjSjTf0Q==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 50,
-                            SecurityStamp = "1dec5e0a-1e75-453e-9757-d81813479c17",
+                            SecurityStamp = "3ba7c9c0-e334-4939-add7-dbe72584c8a8",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "80c13867-7a98-490f-be60-c1dc42e4ff11",
+                            Id = "37c6bf90-023c-4b10-b435-2e61cb4d9151",
                             AccessFailedCount = 0,
                             BaselinePricing = 100,
                             Biography = "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.",
-                            ConcurrencyStamp = "7d989da4-69f1-4070-afdb-502f87881376",
+                            ConcurrencyStamp = "2b75fe06-7e53-4b0f-9a49-662d39eadfe9",
                             Email = "maryremo@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Mary",
@@ -248,10 +252,10 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MARYREMO@GMAIL.COM",
                             ParlorId = 2,
-                            PasswordHash = "AQAAAAEAACcQAAAAEPDNS0z314j9VhMftUKdess+mljLjZ0W2Vowm94UIFzsw9+TL37FBaT+9IAek1t/9A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC/XTFYgfzDAMYLuf2RAsaVJl689/Xu5IpSxt+gcU4e8BfZjgjVbLc6E/4SZ41HRag==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 60,
-                            SecurityStamp = "00f2376b-0530-4377-9978-d91b1a0625a0",
+                            SecurityStamp = "8eee5ef5-608e-467b-968d-69e2d43c4b13",
                             TwoFactorEnabled = false
                         });
                 });
