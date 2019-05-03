@@ -116,6 +116,57 @@ namespace InkInc.Data
                     DaysOpen = "Tuesday - Saturday"
             }
         );
+
+            modelBuilder.Entity<Photo>().HasData(
+                new Photo()
+                {
+                    Id = 1,
+                    UserId = brittany.Id,
+                    FilePath = "~/images/capybara1.jpg"
+                },
+                new Photo()
+                {
+                    Id = 2,
+                    UserId = brittany.Id,
+                    FilePath = "~/images/capybara2.jpg"
+                },
+                new Photo()
+                {
+                    Id = 3,
+                    UserId = allison.Id,
+                    FilePath = "~/images/jeff1.jpg"
+                },
+                new Photo()
+                {
+                    Id = 4,
+                    UserId = allison.Id,
+                    FilePath = "~/images/jeff2.jpg"
+                },
+                new Photo()
+                {
+                    Id = 5,
+                    UserId = mary.Id,
+                    FilePath = "~/images/tenn1.jpg"
+                },
+                new Photo()
+                {
+                    Id = 6,
+                    UserId = mary.Id,
+                    FilePath = "~/images/tenn2.jpg"
+                },
+                new Photo()
+                {
+                    Id = 7,
+                    UserId = asia.Id,
+                    FilePath = "~/images/wedding1.jpg"
+                },
+                new Photo()
+                {
+                    Id = 8,
+                    UserId = asia.Id,
+                    FilePath = "~/images/wedding2.jpg"
+                }
+                );
         }
     }
 }
