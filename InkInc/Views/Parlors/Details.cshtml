@@ -37,12 +37,13 @@
     <h4>
         Our Artists
     </h4>
+
     <table class="table">
         @foreach (var item in Model.Users)
         {
         <tr>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+                <a asp-controller="Users" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
             </td>
         </tr>
         }

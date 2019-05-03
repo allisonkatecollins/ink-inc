@@ -5,7 +5,8 @@
 }
 
 <h1>@Html.DisplayFor(model => model.FullName)</h1>
-<h4><a asp-action="Details" asp-route-id="model.Parlor.ParlorId">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
+
+<h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.Parlor.ParlorId">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
 
 <hr />
 
@@ -18,16 +19,16 @@
 <h4>Contact</h4>
 <div>
     <dl class="row">
-        <dt class = "col-sm-10">
+        <dt class="col-sm-10">
             Set up a consultation:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-10">
+        <dt class="col-sm-10">
             Find me on Instagram:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.InstagramHandle)
         </dd>
     </dl>
