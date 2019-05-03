@@ -34,7 +34,9 @@ namespace InkInc.Controllers
             }
 
             var parlor = await _context.Parlor
-                .FirstOrDefaultAsync(m => m.ParlorId == id);
+                .Include(p => p.Users)
+                .FirstOrDefaultAsync(p => p.ParlorId == id);
+
             if (parlor == null)
             {
                 return NotFound();

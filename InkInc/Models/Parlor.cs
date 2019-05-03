@@ -65,6 +65,6 @@ namespace InkInc.Models
         [Display(Name = "Contact Us")]
         public string PhoneNumber { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; } 
     }
 }
