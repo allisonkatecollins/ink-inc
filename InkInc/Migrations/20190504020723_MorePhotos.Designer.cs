@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InkInc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190503204819_PhotoUpdate")]
-    partial class PhotoUpdate
+    [Migration("20190504020723_MorePhotos")]
+    partial class MorePhotos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,7 +66,7 @@ namespace InkInc.Migrations
                             DaysOpen = "Monday - Saturday",
                             Name = "Black Dahlia Studios",
                             OpenTime = "9:00 AM",
-                            OwnerId = "07a0291c-4d77-4fbb-a07d-dc7a8293bfbd",
+                            OwnerId = "0941ee55-4d71-4e5d-b4a8-acb718af12ad",
                             PhoneNumber = "(615)-555-5555",
                             State = "Tennessee",
                             StreetAddress = "1200 Forest Ave"
@@ -79,7 +79,7 @@ namespace InkInc.Migrations
                             DaysOpen = "Tuesday - Saturday",
                             Name = "Electric Hand",
                             OpenTime = "10:00 AM",
-                            OwnerId = "a74919f5-f63c-4ae0-8fc5-f81091d62693",
+                            OwnerId = "90ed32ae-81f4-4ce8-ada2-c779a6ad22d0",
                             PhoneNumber = "(615)-555-5555",
                             State = "Tennessee",
                             StreetAddress = "300 Rainbow Dr"
@@ -110,56 +110,70 @@ namespace InkInc.Migrations
                             Id = 1,
                             FilePath = "~/images/capybara1.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "c3b39194-f2d1-48a4-b17c-10707cf8abb7"
+                            UserId = "d5ea64be-ac1c-4524-85ce-be6e705d6d8a"
                         },
                         new
                         {
                             Id = 2,
                             FilePath = "~/images/capybara2.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "c3b39194-f2d1-48a4-b17c-10707cf8abb7"
+                            UserId = "d5ea64be-ac1c-4524-85ce-be6e705d6d8a"
                         },
                         new
                         {
                             Id = 3,
                             FilePath = "~/images/jeff1.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "07a0291c-4d77-4fbb-a07d-dc7a8293bfbd"
+                            UserId = "0941ee55-4d71-4e5d-b4a8-acb718af12ad"
                         },
                         new
                         {
                             Id = 4,
                             FilePath = "~/images/jeff2.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "07a0291c-4d77-4fbb-a07d-dc7a8293bfbd"
+                            UserId = "0941ee55-4d71-4e5d-b4a8-acb718af12ad"
                         },
                         new
                         {
                             Id = 5,
                             FilePath = "~/images/tenn1.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "a74919f5-f63c-4ae0-8fc5-f81091d62693"
+                            UserId = "90ed32ae-81f4-4ce8-ada2-c779a6ad22d0"
                         },
                         new
                         {
                             Id = 6,
                             FilePath = "~/images/tenn2.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "a74919f5-f63c-4ae0-8fc5-f81091d62693"
+                            UserId = "90ed32ae-81f4-4ce8-ada2-c779a6ad22d0"
                         },
                         new
                         {
                             Id = 7,
                             FilePath = "~/images/wedding1.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "36cef98b-3452-487b-83a7-b92f19a6f3a7"
+                            UserId = "dbc60669-24f0-4940-a226-ef7b7e7ae267"
                         },
                         new
                         {
                             Id = 8,
                             FilePath = "~/images/wedding2.jpg",
                             IsDisplayPhoto = false,
-                            UserId = "36cef98b-3452-487b-83a7-b92f19a6f3a7"
+                            UserId = "dbc60669-24f0-4940-a226-ef7b7e7ae267"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            FilePath = "~/images/jeff3.jpg",
+                            IsDisplayPhoto = false,
+                            UserId = "0941ee55-4d71-4e5d-b4a8-acb718af12ad"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            FilePath = "~/images/jeff4.jpg",
+                            IsDisplayPhoto = false,
+                            UserId = "0941ee55-4d71-4e5d-b4a8-acb718af12ad"
                         });
                 });
 
@@ -234,11 +248,11 @@ namespace InkInc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "07a0291c-4d77-4fbb-a07d-dc7a8293bfbd",
+                            Id = "0941ee55-4d71-4e5d-b4a8-acb718af12ad",
                             AccessFailedCount = 0,
                             BaselinePricing = 50,
                             Biography = "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.",
-                            ConcurrencyStamp = "d566400a-e8a8-48a0-93e2-8ddf7208a902",
+                            ConcurrencyStamp = "910e888c-2a08-413c-a408-91b2c8a46775",
                             Email = "allisonkatecollins@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Allison",
@@ -247,19 +261,19 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ALLISONKATECOLLINS@GMAIL.COM",
                             ParlorId = 1,
-                            PasswordHash = "AQAAAAEAACcQAAAAEPoLGxj5fRoc/4ZpKU1chhQP/0Q1uUUnBRTp97fB0Sm/uHfLpyNvq10MKAKt1FkNrg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDcQq9CJm/aK7eU1o4Lb1mxgI137GVRkEaHhA+Rley7SNsRkTIVRtSHWVHscnFFI6g==",
                             PhoneNumberConfirmed = false,
-                            PricePerHour = 40,
-                            SecurityStamp = "aa68f3e8-d75d-4591-b142-c873a1881df7",
+                            PricePerHour = 80,
+                            SecurityStamp = "4ef56478-2d43-4fe1-87e2-9e8e18de0118",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "36cef98b-3452-487b-83a7-b92f19a6f3a7",
+                            Id = "dbc60669-24f0-4940-a226-ef7b7e7ae267",
                             AccessFailedCount = 0,
                             BaselinePricing = 60,
                             Biography = "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.",
-                            ConcurrencyStamp = "accbc768-9b42-46a8-960c-44855bacba51",
+                            ConcurrencyStamp = "7004e651-7727-40fa-bc2a-ce2c414ee06e",
                             Email = "asiacarter@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Asia",
@@ -268,19 +282,19 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ASIACARTER@GMAIL.COM",
                             ParlorId = 1,
-                            PasswordHash = "AQAAAAEAACcQAAAAEFxTU+rJPkuXuZk8ARg4L1mgVYHbD6FxHfsnwQSl9h5eagQC22149DCzgICaVkhl8g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJLPnTfv30qM71ZBaITqeqMZSSPgXYkwICeZXrURU1BZkeyoO3n6LDAvJUCPYddhYQ==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 50,
-                            SecurityStamp = "f284677d-b45a-470f-b6fa-e44c47fb8b76",
+                            SecurityStamp = "3703f7e3-f239-47c3-b54f-cfd44b8c384d",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "c3b39194-f2d1-48a4-b17c-10707cf8abb7",
+                            Id = "d5ea64be-ac1c-4524-85ce-be6e705d6d8a",
                             AccessFailedCount = 0,
                             BaselinePricing = 25,
                             Biography = "I specialize in black-and-white tattoos of capybaras.",
-                            ConcurrencyStamp = "ed8153ac-aabe-402b-8512-e42cff00391e",
+                            ConcurrencyStamp = "b9e9f417-9fc7-4e64-a909-729b55c3c9b4",
                             Email = "brj@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Brittany",
@@ -289,19 +303,19 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BRJ@GMAIL.COM",
                             ParlorId = 2,
-                            PasswordHash = "AQAAAAEAACcQAAAAEObCdi1Ix7iAAcMa2vTr+4SOJLMm6qI5odhDKRIVn5pjluUTPCPM+k1Dfk0VIpVt5Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMXDsbNSjAxh56/lNosiSDXfPGBv6PLZmYUywgUrJHMujT/7A2h+QrXr9kazrwo/WA==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 50,
-                            SecurityStamp = "4cd9f80b-db38-45a9-95b3-ff0b88641d84",
+                            SecurityStamp = "b92b2c91-0f80-4242-868d-6cfc84488f82",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "a74919f5-f63c-4ae0-8fc5-f81091d62693",
+                            Id = "90ed32ae-81f4-4ce8-ada2-c779a6ad22d0",
                             AccessFailedCount = 0,
                             BaselinePricing = 100,
                             Biography = "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.",
-                            ConcurrencyStamp = "2ca122d8-a147-41e4-bfc3-6d05032230f8",
+                            ConcurrencyStamp = "4befca74-a965-4858-9c8b-38f9f014ef94",
                             Email = "maryremo@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Mary",
@@ -310,10 +324,10 @@ namespace InkInc.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MARYREMO@GMAIL.COM",
                             ParlorId = 2,
-                            PasswordHash = "AQAAAAEAACcQAAAAEENufphAxT+UR8yAXJjVkJ3rJsjkl21jMV9UTNOQQSfVvDf5uQCeN4Uk+QZHZetpXg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHPRjYGcn+UAo3xl0tyOHCrtLvvc+j+g2YpVtDwsNsxzShUcAMmrOinKT0xcH79KKQ==",
                             PhoneNumberConfirmed = false,
                             PricePerHour = 60,
-                            SecurityStamp = "e200a405-73d9-4035-b770-504e56008f20",
+                            SecurityStamp = "be95c9e5-6cff-4334-b93d-3c9a23d981c4",
                             TwoFactorEnabled = false
                         });
                 });

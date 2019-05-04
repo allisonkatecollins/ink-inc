@@ -24,7 +24,7 @@ namespace InkInc.Data
             Email = "allisonkatecollins@gmail.com",
             NormalizedEmail = "ALLISONKATECOLLINS@GMAIL.COM",
             BaselinePricing = 50,
-            PricePerHour = 40,
+            PricePerHour = 80,
             InstagramHandle = "@allisonkatecollins",
             Biography = "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.",
             ParlorId = 1,
@@ -165,6 +165,18 @@ namespace InkInc.Data
                     Id = 8,
                     UserId = asia.Id,
                     FilePath = "~/images/wedding2.jpg"
+                },
+                new Photo()
+                {
+                    Id = 9,
+                    UserId = allison.Id,
+                    FilePath = "~/images/jeff3.jpg"
+                },
+                new Photo()
+                {
+                Id = 10,
+                    UserId = allison.Id,
+                    FilePath = "~/images/jeff4.jpg"
                 }
                 );
         }
