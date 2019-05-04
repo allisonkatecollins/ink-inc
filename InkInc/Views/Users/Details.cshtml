@@ -62,16 +62,14 @@
         Portfolio
     </h4>
 
-    <table class="grid">
+    <div class="row">
         @foreach (var item in Model.Photos)
         {
-        <tr class="row">
-            <td class="col-10">
-                <img src="@Url.Content(item.FilePath)", alt="tattoo" height="300"/>
-            </td>
-        </tr>
+            <p class="col-sm-auto">
+                <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
+            </p>
         }
-    </table>
+    </div>
  }
 
 <div>

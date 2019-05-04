@@ -7,19 +7,34 @@
 <h1>Arists</h1>
 
 <table class="table">
-    <tbody>
-        @foreach (var item in Model) {
+    <thead>
         <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parlor.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parlor.CityAndState)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                Parlor Name
+            </th>
+            <th>
+                Parlor Location
+            </th>
+            <th></th>
         </tr>
-                }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parlor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parlor.CityAndState)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
