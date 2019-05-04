@@ -53,6 +53,25 @@
         </dd>
     </dl>
 </div>
+
+<hr />
+
+@if (Model.Photos != null)
+{
+    <h4>
+        Portfolio
+    </h4>
+
+    <div class="row">
+        @foreach (var item in Model.Photos)
+        {
+            <p class="col-sm-auto">
+                <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
+            </p>
+        }
+    </div>
+ }
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

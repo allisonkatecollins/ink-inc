@@ -33,6 +33,7 @@ namespace InkInc.Models
 
         public virtual ICollection<Photo> Photos { get; set; }
 
+        [Display(Name = "Name")]
         public string FullName
         {
             get

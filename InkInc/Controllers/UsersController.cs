@@ -36,6 +36,7 @@ namespace InkInc.Controllers
 
             var User = await _context.User
                 .Include(u => u.Parlor)
+                .Include(u => u.Photos)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (User == null)
             {
