@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InkInc.Data;
 using InkInc.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace InkInc.Controllers
 {
@@ -14,10 +15,18 @@ namespace InkInc.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public PhotosController(ApplicationDbContext context)
+        //access the currently authenticated user
+        private readonly UserManager<User> _userManager;
+
+        //inject UserManager service
+        public PhotosController(ApplicationDbContext context, UserManager<User> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
+
+        //allows any method that needs to see who the user is to invoke the method
+        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: Photos
         public async Task<IActionResult> Index()
