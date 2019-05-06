@@ -58,7 +58,7 @@ namespace InkInc.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City");
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name");
             return View();
         }
 
@@ -75,7 +75,7 @@ namespace InkInc.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
@@ -92,7 +92,7 @@ namespace InkInc.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
@@ -128,7 +128,7 @@ namespace InkInc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
