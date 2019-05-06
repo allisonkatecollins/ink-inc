@@ -10,23 +10,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="BaselinePricing" class="control-label"></label>
                 <input asp-for="BaselinePricing" class="form-control" />
@@ -39,17 +24,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="InstagramHandle" class="control-label"></label>
-                <input asp-for="InstagramHandle" class="form-control" />
+                <br/>
+                @Html.TextBoxFor(model => model.InstagramHandle, new { placeholder = "@InstagramHandle" })
                 <span asp-validation-for="InstagramHandle" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Biography" class="control-label"></label>
-                <input asp-for="Biography" class="form-control" />
+                @Html.TextAreaFor(model => model.Biography, new { rows = 10, cols = 50, placeholder = "Tell us about yourself, including thematic preferences and specialties." })
                 <span asp-validation-for="Biography" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ParlorId" class="control-label"></label>
-                <select asp-for="ParlorId" class ="form-control" asp-items="ViewBag.ParlorId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

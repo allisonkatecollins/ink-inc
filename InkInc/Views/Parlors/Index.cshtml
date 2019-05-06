@@ -6,6 +6,10 @@
 
 <h1>Parlors</h1>
 
+<div class="form-group">
+    <input type="submit" value="Add new parlor" class="btn btn-secondary" />
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,18 +26,19 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hours)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hours)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

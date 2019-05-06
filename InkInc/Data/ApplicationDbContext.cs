@@ -21,6 +21,8 @@ namespace InkInc.Data
         User allison = new User {
             FirstName = "Allison",
             LastName = "Collins",
+            UserName = "allisonkatecollins@gmail.com",
+            NormalizedUserName = "ALLISONKATECOLLINS@GMAIL.COM",
             Email = "allisonkatecollins@gmail.com",
             NormalizedEmail = "ALLISONKATECOLLINS@GMAIL.COM",
             BaselinePricing = 50,
@@ -39,6 +41,8 @@ namespace InkInc.Data
         User asia = new User {
             FirstName = "Asia",
             LastName = "Carter",
+            UserName = "asiacarter@gmail.com",
+            NormalizedUserName = "ASIACARTER@GMAIL.COM",
             Email = "asiacarter@gmail.com",
             NormalizedEmail = "ASIACARTER@GMAIL.COM",
             BaselinePricing = 60,
@@ -57,6 +61,8 @@ namespace InkInc.Data
         User brittany = new User {
             FirstName = "Brittany",
             LastName = "Ramos-Janeway",
+            UserName = "brj@gmail.com",
+            NormalizedUserName = "BRJ@GMAIL.COM",
             Email = "brj@gmail.com",
             NormalizedEmail = "BRJ@GMAIL.COM",
             BaselinePricing = 25,
@@ -75,6 +81,8 @@ namespace InkInc.Data
         User mary = new User {
             FirstName = "Mary",
             LastName = "Remo",
+            UserName = "maryremo@gmail.com",
+            NormalizedUserName = "MARYREMO@GMAIL.COM",
             Email = "maryremo@gmail.com",
             NormalizedEmail = "MARYREMO@GMAIL.COM",
             BaselinePricing = 100,
