@@ -27,7 +27,7 @@ namespace InkInc.Models
 
         public string Biography { get; set; }
 
-        public int ParlorId { get; set; }
+        public int? ParlorId { get; set; }
 
         public Parlor Parlor { get; set; }
 
