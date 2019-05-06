@@ -11,10 +11,17 @@ namespace InkInc.Models
     //the colon enables the user to inherit all the properties of IdentityUser, which were automatically generated
     public class User : IdentityUser
     {
+        public User()
+        {
+
+        }
+
         [Required]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
 
         [Display(Name = "Baseline price")]
@@ -23,8 +30,10 @@ namespace InkInc.Models
         [Display(Name = "Price per hour")]
         public int PricePerHour { get; set; }
 
+        [Display(Name = "Instagram handle")]
         public string InstagramHandle { get; set; }
 
+       [MaxLength(500)]
         public string Biography { get; set; }
 
         public int? ParlorId { get; set; }
