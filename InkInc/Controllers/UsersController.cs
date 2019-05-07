@@ -25,14 +25,30 @@ namespace InkInc.Controllers
             _context = context;
         }
 
-        //allows any method that needs to see who the user is to invoke the method
+        //getting current user (whoever is logged in) into the system
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: User
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchUserCity)
         {
-            var applicationDbContext = _context.User.Include(u => u.Parlor);
-            return View(await applicationDbContext.ToListAsync());
+            //index if nothing has been searched
+            if (string.IsNullOrEmpty(searchUserCity))
+            {
+                var applicationDbContext = _context.User
+                    .Include(u => u.Parlor);
+                return View(await applicationDbContext.ToListAsync());
+            }
+
+            //index if something has been searched
+            if (!string.IsNullOrEmpty(searchUserCity)) 
+            {
+                var applicationDbContext = _context.User
+                    .Include(u => u.Parlor)
+                    .Where(u => u.Parlor.City.Contains(searchUserCity));
+                return View(await applicationDbContext.ToListAsync());
+            }
+
+            return View();
         }
 
         // GET: User/Details/5
