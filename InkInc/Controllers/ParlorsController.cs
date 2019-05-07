@@ -9,6 +9,7 @@ using InkInc.Data;
 using InkInc.Models;
 using Microsoft.AspNetCore.Identity;
 
+
 namespace InkInc.Controllers
 {
     public class ParlorsController : Controller
@@ -25,13 +26,30 @@ namespace InkInc.Controllers
             _context = context;
         }
 
-        //allows any method that needs to see who the user is to invoke the method
+        //get whoever is currently logged in into the system
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: Parlors
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchParlorCity)
         {
-            return View(await _context.Parlor.ToListAsync());
+            //index if nothing has been searched
+            if (string.IsNullOrEmpty(searchParlorCity))
+            {
+                var parlors = _context.Parlor;
+
+                return View(await parlors.ToListAsync());
+            }
+
+            //index if something has been searched
+            if (!string.IsNullOrEmpty(searchParlorCity))
+            {
+                var parlors = _context.Parlor
+                    .Where(p => p.City.Contains(searchParlorCity));
+
+                return View(await parlors.ToListAsync());
+            }
+
+            return View();
         }
 
         // GET: Parlors/Details/5
