@@ -1,4 +1,10 @@
 ﻿@model IEnumerable<InkInc.Models.Parlor>
+@using Microsoft.AspNetCore.Identity
+@using InkInc.Models
+
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = "Index";
@@ -44,6 +50,9 @@
     </tbody>
 </table>
 
-<div class="form-group">
-    <input type="submit" value="Add new parlor" class="btn btn-secondary" />
-</div>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="form-group">
+        <input type="submit" value="Add new parlor" class="btn btn-secondary" />
+    </div>
+}

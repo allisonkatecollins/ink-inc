@@ -72,10 +72,13 @@ namespace InkInc.Controllers
         }
 
         // GET: User/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City");
-            return View();
+            //get current logged in user
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name");
+            //return specified user
+            return View(user);
         }
 
         // POST: User/Create
@@ -85,13 +88,20 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
         {
+            //let the info post to DB
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
+                //fetch user asynchronously
+                var user = await _userManager.GetUserAsync(HttpContext.User);
                 _context.Add(User);
                 await _context.SaveChangesAsync();
+                //return to artist index
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
@@ -108,7 +118,7 @@ namespace InkInc.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
@@ -144,7 +154,7 @@ namespace InkInc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "City", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
