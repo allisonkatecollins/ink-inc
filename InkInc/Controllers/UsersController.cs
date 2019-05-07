@@ -72,11 +72,13 @@ namespace InkInc.Controllers
         }
 
         // GET: User/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            //generated in case I need to make a dropdown - not currently needed
+            //get current logged in user
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name");
-            return View();
+            //return specified user
+            return View(user);
         }
 
         // POST: User/Create
