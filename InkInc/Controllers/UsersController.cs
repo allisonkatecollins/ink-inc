@@ -58,6 +58,7 @@ namespace InkInc.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
+            //generated in case I need to make a dropdown - not currently needed
             ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name");
             return View();
         }
@@ -73,6 +74,7 @@ namespace InkInc.Controllers
             {
                 _context.Add(User);
                 await _context.SaveChangesAsync();
+                //return to artist index
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
