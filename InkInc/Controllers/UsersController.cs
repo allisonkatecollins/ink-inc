@@ -70,8 +70,14 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
         {
+            //let the info post to DB
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
+                //fetch user asynchronously
+                var user = await _userManager.GetUserAsync(HttpContext.User);
                 _context.Add(User);
                 await _context.SaveChangesAsync();
                 //return to artist index
