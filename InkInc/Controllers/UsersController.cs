@@ -88,7 +88,6 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
         {
-            //let the info post to DB
             ModelState.Remove("User");
             ModelState.Remove("UserId");
 
