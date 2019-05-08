@@ -1,14 +1,29 @@
 ﻿@model InkInc.Models.User
 
+@using InkInc.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
+
 @{
     ViewData["Title"] = "Details";
 }
+
+@{ var currentUser = await UserManager.GetUserAsync(User);}
 
 <h1>@Html.DisplayFor(model => model.FullName)</h1>
 
 <h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.Parlor.ParlorId">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
 
 <hr />
+
+@if (Model.Id == currentUser.Id)
+{
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    </td>
+}
 
 <div>
     @Html.DisplayFor(model => model.Biography)
@@ -66,11 +81,11 @@
         @foreach (var item in Model.Photos)
         {
             <p class="col-sm-auto">
-                <img src="@Url.Content(item.FilePath)", alt="tattoo" height="300" />
+                <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
             </p>
         }
     </div>
- }
+}
 
 <div>
     <a asp-action="Index">Back to List</a>
