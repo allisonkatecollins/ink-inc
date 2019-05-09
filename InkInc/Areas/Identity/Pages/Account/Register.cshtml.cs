@@ -25,27 +25,29 @@ namespace InkInc.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
 
         //populate parlor dropdown list in registration page
-        public SelectList ParlorNamesSL { get; set; }
 
-        public void PopulateParlorsDropDownList(ApplicationDbContext _context, object selectedParlor = null)
+        public List<SelectListItem> PopulateParlorsDropDownList()
         {
-            var parlorsQuery = from p in _context.Parlor
-                               orderby p.Name //sort by name
-                               select p;
+            var parlors = _context.Parlor;
+            List<SelectListItem> parlorOptions = new List<SelectListItem>();
 
-            ParlorNamesSL = new SelectList(parlorsQuery.AsNoTracking(),
-                "ParlorId", "Name", selectedParlor);
+            foreach (Parlor p in parlors)
+            {
+                SelectListItem li = new SelectListItem("ParlorId", "Name"); //value, text
+                parlorOptions.Add(li);
+            }
+
+            return parlorOptions;
         }
-        
-
-
-
+       
         public RegisterModel(
+            ApplicationDbContext context,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -85,6 +87,8 @@ namespace InkInc.Areas.Identity.Pages.Account
             public string Biography { get; set; }
 
             public int? ParlorId { get; set; }
+
+            public List<SelectListItem> parlorOptions { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

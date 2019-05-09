@@ -49,12 +49,9 @@
                 <span asp-validation-for="Input.Biography" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Parlor.Name" class="control-label"></label>
-                <select asp-for="Parlor.Name" class="form-control"
-                        asp-items="@Model.ParlorNamesSL">
-                    <option value="">-- Select Parlor --</option>
-                </select>
-                <span asp-validation-for="Parlor.ParlorId" class="text-danger" />
+                <label asp-for="Input.ParlorId" class="control-label"></label>
+                @Html.DropDownListFor(x => Model.Input.ParlorId, new SelectList(Model.PopulateParlorsDropDownList(), "ParlorId", "Name"), htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="Input.ParlorId" class="text-danger" />
             </div>
             <div class="form-group">
                 <label asp-for="Input.Password"></label>
