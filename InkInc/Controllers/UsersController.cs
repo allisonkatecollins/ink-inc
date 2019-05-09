@@ -54,6 +54,8 @@ namespace InkInc.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(string id)
         {
+        //get current logged in user
+        //var user = await _userManager.GetUserAsync(HttpContext.User);
             if (id == null)
             {
                 return NotFound();

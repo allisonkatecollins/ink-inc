@@ -12,81 +12,82 @@
 
 @{ var currentUser = await UserManager.GetUserAsync(User);}
 
-<h1>@Html.DisplayFor(model => model.FullName)</h1>
+@if (SignInManager.IsSignedIn(User) && Model.Id == currentUser.Id)
+    {
+        <td>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit Profile</a>
+        </td>
+    }
 
-<h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.Parlor.ParlorId">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
+    <h1>@Html.DisplayFor(model => model.FullName)</h1>
 
-<hr />
+    <h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.Parlor.ParlorId">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
 
-@if (Model.Id == currentUser.Id)
-{
-    <td>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-    </td>
-}
+    <hr />
 
-<div>
-    @Html.DisplayFor(model => model.Biography)
-</div>
 
-<hr />
-
-<h4>Contact</h4>
-<div>
-    <dl class="row">
-        <dt class="col-sm-10">
-            Set up a consultation:
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-10">
-            Find me on Instagram:
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InstagramHandle)
-        </dd>
-    </dl>
-</div>
-
-<hr />
-
-<h4>Pricing</h4>
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BaselinePricing)
-        </dt>
-        <dd class="col-sm-10">
-            $@Html.DisplayFor(model => model.BaselinePricing)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PricePerHour)
-        </dt>
-        <dd class="col-sm-10">
-            $@Html.DisplayFor(model => model.PricePerHour)/hour
-        </dd>
-    </dl>
-</div>
-
-<hr />
-
-@if (Model.Photos != null)
-{
-    <h4>
-        Portfolio
-    </h4>
-
-    <div class="row">
-        @foreach (var item in Model.Photos)
-        {
-            <p class="col-sm-auto">
-                <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
-            </p>
-        }
+    <div>
+        @Html.DisplayFor(model => model.Biography)
     </div>
-}
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <hr />
+
+    <h4>Contact</h4>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-10">
+                Set up a consultation:
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-10">
+                Find me on Instagram:
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InstagramHandle)
+            </dd>
+        </dl>
+    </div>
+
+    <hr />
+
+    <h4>Pricing</h4>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BaselinePricing)
+            </dt>
+            <dd class="col-sm-10">
+                $@Html.DisplayFor(model => model.BaselinePricing)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PricePerHour)
+            </dt>
+            <dd class="col-sm-10">
+                $@Html.DisplayFor(model => model.PricePerHour)/hour
+            </dd>
+        </dl>
+    </div>
+
+    <hr />
+
+    @if (Model.Photos != null)
+    {
+        <h4>
+            Portfolio
+        </h4>
+
+        <div class="row">
+            @foreach (var item in Model.Photos)
+            {
+                <p class="col-sm-auto">
+                    <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
+                </p>
+            }
+        </div>
+    }
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>

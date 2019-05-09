@@ -24,16 +24,18 @@ namespace InkInc.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
+        [Required]
         [Display(Name = "Baseline price")]
-        public int BaselinePricing { get; set; }
+        public int? BaselinePricing { get; set; }
 
+        [Required]
         [Display(Name = "Price per hour")]
         public int PricePerHour { get; set; }
 
         [Display(Name = "Instagram handle")]
         public string InstagramHandle { get; set; }
 
-       [MaxLength(500)]
+        [MaxLength(500)]
         public string Biography { get; set; }
 
         public int? ParlorId { get; set; }

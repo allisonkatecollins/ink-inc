@@ -28,6 +28,16 @@
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Input.BaselinePricing"></label>
+                <input asp-for="Input.BaselinePricing" class="form-control" />
+                <span asp-validation-for="Input.BaselinePricing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PricePerHour"></label>
+                <input asp-for="Input.PricePerHour" class="form-control" />
+                <span asp-validation-for="Input.PricePerHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.Password"></label>
                 <input asp-for="Input.Password" class="form-control" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
