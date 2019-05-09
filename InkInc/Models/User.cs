@@ -24,11 +24,9 @@ namespace InkInc.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
-        [Required]
         [Display(Name = "Baseline price")]
-        public int? BaselinePricing { get; set; }
+        public int BaselinePricing { get; set; }
 
-        [Required]
         [Display(Name = "Price per hour")]
         public int PricePerHour { get; set; }
 

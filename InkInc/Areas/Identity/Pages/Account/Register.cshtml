@@ -38,6 +38,25 @@
                 <span asp-validation-for="Input.PricePerHour" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Input.InstagramHandle" class="control-label"></label>
+                <br />
+                @Html.TextBoxFor(model => model.Input.InstagramHandle, new { placeholder = "@InstagramHandle" })
+                <span asp-validation-for="Input.InstagramHandle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Biography" class="control-label"></label>
+                @Html.TextAreaFor(model => model.Input.Biography, new { rows = 10, cols = 50, placeholder = "Tell us about yourself, including thematic preferences and specialties." })
+                <span asp-validation-for="Input.Biography" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Parlor.Name" class="control-label"></label>
+                <select asp-for="Parlor.Name" class="form-control"
+                        asp-items="@Model.ParlorNamesSL">
+                    <option value="">-- Select Parlor --</option>
+                </select>
+                <span asp-validation-for="Parlor.ParlorId" class="text-danger" />
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.Password"></label>
                 <input asp-for="Input.Password" class="form-control" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>

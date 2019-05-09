@@ -10,16 +10,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using InkInc.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using InkInc.Data;
 
 namespace InkInc.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        private readonly ApplicationDbContext _context;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+
+        //populate parlor dropdown list in registration page
+        public SelectList ParlorNamesSL { get; set; }
+
+        public void PopulateParlorsDropDownList(ApplicationDbContext _context, object selectedParlor = null)
+        {
+            var parlorsQuery = from p in _context.Parlor
+                               orderby p.Name //sort by name
+                               select p;
+
+            ParlorNamesSL = new SelectList(parlorsQuery.AsNoTracking(),
+                "ParlorId", "Name", selectedParlor);
+        }
+        
+
+
 
         public RegisterModel(
             UserManager<User> userManager,
@@ -53,13 +72,19 @@ namespace InkInc.Areas.Identity.Pages.Account
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
-            [Required]
             [Display(Name = "Baseline price")]
-            public int? BaselinePricing { get; set; }
+            public int BaselinePricing { get; set; }
 
-            [Required]
             [Display(Name = "Price per hour")]
             public int PricePerHour { get; set; }
+
+            [Display(Name = "Instagram handle")]
+            public string InstagramHandle { get; set; }
+
+            [MaxLength(500)]
+            public string Biography { get; set; }
+
+            public int? ParlorId { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -83,7 +108,9 @@ namespace InkInc.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, BaselinePricing = Input.BaselinePricing, PricePerHour = Input.PricePerHour };
+                var user = new User { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName,
+                    BaselinePricing = Input.BaselinePricing, PricePerHour = Input.PricePerHour,
+                    InstagramHandle = Input.InstagramHandle, Biography = Input.Biography, ParlorId = Input.ParlorId };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
