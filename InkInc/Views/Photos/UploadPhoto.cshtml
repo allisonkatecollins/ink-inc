@@ -1,0 +1,27 @@
+﻿@model InkInc.Models.View_Models.UserDetailsViewModel
+
+@{
+    ViewData["Title"] = "Upload Photo";
+}
+
+<h1>Upload Photos</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UploadPhoto" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="control-label" asp-for="ImageToSave">Upload Image</label>
+                <input asp-for="ImageToSave" />
+            </div>
+            <div>
+                <input type="submit" value="Upload new photo" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Users" asp-action="Details">Back to Profile</a>
+</div>
+

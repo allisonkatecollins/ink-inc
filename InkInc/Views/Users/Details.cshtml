@@ -72,12 +72,12 @@
 
     <hr />
 
-@*@if (SignInManager.IsSignedIn(User) && Model.Id == currentUser.Id)
+@if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
     {
     <td>
-        <a asp-action="Create" asp-controller="Photos" asp-route-id="@Model.Id">Upload photo</a>
+        <a asp-action="GetUploadPhoto">Upload image</a>
     </td>
-    }*@
+    }
 
     @if (Model.User.Photos != null)
     {

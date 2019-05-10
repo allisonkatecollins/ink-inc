@@ -7,5 +7,7 @@ namespace InkInc.Models.View_Models
         public User User { get; set; }
 
         public IFormFile ImageToSave { get; set; }
+
+        public Photo Photo { get; set; }
     }
 }
