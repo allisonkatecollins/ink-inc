@@ -24,10 +24,10 @@ namespace InkInc.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
-        //populate parlor dropdown list in registration page
-
+        //populate parlor dropdown list
         public List<SelectListItem> PopulateParlorsDropDownList()
         {
+            //access db
             var parlors = _context.Parlor;
             List<SelectListItem> parlorOptions = new List<SelectListItem>();
 
