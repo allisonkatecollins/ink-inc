@@ -54,6 +54,8 @@ namespace InkInc.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(string id)
         {
+        //get current logged in user
+        //var user = await _userManager.GetUserAsync(HttpContext.User);
             if (id == null)
             {
                 return NotFound();
@@ -88,7 +90,6 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
         {
-            //let the info post to DB
             ModelState.Remove("User");
             ModelState.Remove("UserId");
 
@@ -108,7 +109,11 @@ namespace InkInc.Controllers
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
+            //access user that's logged in
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            //edit only available for logged in user's profile
+            if (id == null || id != currentUser.Id)
             {
                 return NotFound();
             }
@@ -129,16 +134,29 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
         {
-            if (id != User.Id)
+            //access user that's logged in
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            if (id != User.Id || id != currentUser.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                //update current user with every property that I've determined to be updateable 
                 try
                 {
-                    _context.Update(User);
+                    currentUser.FirstName = User.FirstName;
+                    currentUser.LastName = User.LastName;
+                    currentUser.BaselinePricing = User.BaselinePricing;
+                    currentUser.PricePerHour = User.PricePerHour;
+                    currentUser.InstagramHandle = User.InstagramHandle;
+                    currentUser.Biography = User.Biography;
+                    currentUser.ParlorId = User.ParlorId;
+
+                    //changed this from User to currentUser
+                    _context.Update(currentUser);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

@@ -5,6 +5,7 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
+@{ var currentUser = await UserManager.GetUserAsync(User); }
 
 <!DOCTYPE html>
 <html>
@@ -50,23 +51,8 @@
 
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Create">Profile</a></li>
-
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Details" asp-route-id="@currentUser.Id">Profile</a></li>
                         }
-
-                        <li>
-                            @*<form asp-controller="Users" asp-action="Index">
-                                <input type="text" name="searchUserCity" placeholder="Search artist by city" size="10">
-                                <input type="submit" value="Search" />
-                            </form>*@
-                        </li>
-                        <li>
-                            @*<form asp-controller="Parlors" asp-action="Index">
-                                <input type="text" name="searchParlorCity" placeholder="Search parlor by city" size="10">
-                                <input type="submit" value="Search" />
-                            </form>*@
-                        </li>
-
 
                     </ul>
                 </div>
