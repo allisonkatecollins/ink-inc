@@ -8,25 +8,40 @@ using Microsoft.EntityFrameworkCore;
 using InkInc.Data;
 using InkInc.Models;
 using Microsoft.AspNetCore.Identity;
+using InkInc.Models.View_Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace InkInc.Controllers
 {
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private readonly IHostingEnvironment _hostEnviro;
         //access the currently authenticated user
         private readonly UserManager<User> _userManager;
 
         //inject UserManager service
-        public UsersController(ApplicationDbContext context, UserManager<User> userManager)
+        //IHostingEnvironment needed to upload; built into ASP.NET
+        public UsersController(IHostingEnvironment hostingEnvironment, ApplicationDbContext context, UserManager<User> userManager)
         {
+            _hostEnviro = hostingEnvironment;
             _userManager = userManager;
             _context = context;
         }
 
         //getting current user (whoever is logged in) into the system
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+        //method to prevent user from uploading 2 images with same name
+        private string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                      + "_"
+                      + Guid.NewGuid().ToString().Substring(0, 4)
+                      + Path.GetExtension(fileName);
+        }
 
         // GET: User
         public async Task<IActionResult> Index(string searchUserCity)
@@ -51,15 +66,15 @@ namespace InkInc.Controllers
             return View();
         }
 
-        // GET: User/Details/5
+        // GET PROFILE: User/Details/5
         public async Task<IActionResult> Details(string id)
         {
-        //get current logged in user
-        //var user = await _userManager.GetUserAsync(HttpContext.User);
             if (id == null)
             {
                 return NotFound();
             }
+
+            UserDetailsViewModel viewModel = new UserDetailsViewModel();
 
             var User = await _context.User
                 .Include(u => u.Parlor)
@@ -70,7 +85,59 @@ namespace InkInc.Controllers
                 return NotFound();
             }
 
-            return View(User);
+            //User defined in viewModel = User defined above
+            viewModel.User = User;
+
+            return View(viewModel);
+        }
+        //GET UploadPhoto view - exists in Photos view folder
+        public async Task<IActionResult> GetUploadPhoto()
+        {
+            UserDetailsViewModel viewModel = new UserDetailsViewModel();
+            return View("../Photos/UploadPhoto", viewModel);
+        }
+
+        //POST: User/Details/5
+        //this method is very similar to User/Create method below
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UploadPhoto(UserDetailsViewModel viewModel)
+        {
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
+
+            if (ModelState.IsValid)
+            {
+                //fetch user asynchronously
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
+                if (viewModel.ImageToSave != null)
+                {
+                    //FileName is a built-in property of type IFormFile, which was declared in the view model
+                    var uniqueFileName = GetUniqueFileName(viewModel.ImageToSave.FileName);
+                    //save uploaded images to "images" folder in wwwroot folder
+                    var uploads = Path.Combine(_hostEnviro.WebRootPath, "images");
+                    var filePath = Path.Combine(uploads, uniqueFileName);
+                    viewModel.ImageToSave.CopyTo(new FileStream(filePath, FileMode.Create));
+                    //instantiate new photo to be sent to db
+                    Photo photo = new Photo()
+                    {
+                        FilePath = "~/images/" + uniqueFileName,
+                        UserId = user.Id
+                    };
+
+                    //access Photo table, which exists in the db - unlike the view model
+                    _context.Add(photo);
+                    //adds photo to db
+                    await _context.SaveChangesAsync();
+                }
+
+                //return to Details page with images; access URL of specific user
+                return RedirectToAction(nameof(Details), new { id = user.Id});
+            }
+
+            //if none of the above works, just show Details
+            return View("Details");
         }
 
         // GET: User/Create
@@ -90,6 +157,7 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
         {
+            //User and UserId does exist within Identity User model, but are not included in registration; this prevents from throwing an error
             ModelState.Remove("User");
             ModelState.Remove("UserId");
 
@@ -97,6 +165,7 @@ namespace InkInc.Controllers
             {
                 //fetch user asynchronously
                 var user = await _userManager.GetUserAsync(HttpContext.User);
+                //add back User and UserId that were removed above
                 _context.Add(User);
                 await _context.SaveChangesAsync();
                 //return to artist index

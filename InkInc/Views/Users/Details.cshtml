@@ -1,4 +1,4 @@
-﻿@model InkInc.Models.User
+﻿@model InkInc.Models.View_Models.UserDetailsViewModel
 
 @using InkInc.Models
 @using Microsoft.AspNetCore.Identity
@@ -12,22 +12,22 @@
 
 @{ var currentUser = await UserManager.GetUserAsync(User);}
 
-@if (SignInManager.IsSignedIn(User) && Model.Id == currentUser.Id)
+@if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
     {
         <td>
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit Profile</a>
+            <a asp-action="Edit" asp-route-id="@Model.User.Id">Edit Profile</a>
         </td>
     }
 
-    <h1>@Html.DisplayFor(model => model.FullName)</h1>
+    <h1>@Html.DisplayFor(model => model.User.FullName)</h1>
 
-    <h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.Parlor.ParlorId">@Html.DisplayFor(model => model.Parlor.Name)</a></h4>
+    <h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.User.Parlor.ParlorId">@Html.DisplayFor(model => model.User.Parlor.Name)</a></h4>
 
     <hr />
 
 
     <div>
-        @Html.DisplayFor(model => model.Biography)
+        @Html.DisplayFor(model => model.User.Biography)
     </div>
 
     <hr />
@@ -39,13 +39,13 @@
                 Set up a consultation:
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Email)
+                @Html.DisplayFor(model => model.User.Email)
             </dd>
             <dt class="col-sm-10">
                 Find me on Instagram:
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.InstagramHandle)
+                @Html.DisplayFor(model => model.User.InstagramHandle)
             </dd>
         </dl>
     </div>
@@ -56,30 +56,37 @@
     <div>
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BaselinePricing)
+                @Html.DisplayNameFor(model => model.User.BaselinePricing)
             </dt>
             <dd class="col-sm-10">
-                $@Html.DisplayFor(model => model.BaselinePricing)
+                $@Html.DisplayFor(model => model.User.BaselinePricing)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PricePerHour)
+                @Html.DisplayNameFor(model => model.User.PricePerHour)
             </dt>
             <dd class="col-sm-10">
-                $@Html.DisplayFor(model => model.PricePerHour)/hour
+                $@Html.DisplayFor(model => model.User.PricePerHour)/hour
             </dd>
         </dl>
     </div>
 
     <hr />
 
-    @if (Model.Photos != null)
+@if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
+    {
+    <td>
+        <a asp-action="GetUploadPhoto">Upload image</a>
+    </td>
+    }
+
+    @if (Model.User.Photos != null)
     {
         <h4>
             Portfolio
         </h4>
 
         <div class="row">
-            @foreach (var item in Model.Photos)
+            @foreach (var item in Model.User.Photos)
             {
                 <p class="col-sm-auto">
                     <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
