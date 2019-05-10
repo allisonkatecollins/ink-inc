@@ -8,25 +8,40 @@ using Microsoft.EntityFrameworkCore;
 using InkInc.Data;
 using InkInc.Models;
 using Microsoft.AspNetCore.Identity;
+using InkInc.Models.View_Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace InkInc.Controllers
 {
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private readonly IHostingEnvironment _hostEnviro;
         //access the currently authenticated user
         private readonly UserManager<User> _userManager;
 
         //inject UserManager service
-        public UsersController(ApplicationDbContext context, UserManager<User> userManager)
+        //IHostingEnvironment needed to upload; built into ASP.NET
+        public UsersController(IHostingEnvironment hostingEnvironment, ApplicationDbContext context, UserManager<User> userManager)
         {
+            _hostEnviro = hostingEnvironment;
             _userManager = userManager;
             _context = context;
         }
 
         //getting current user (whoever is logged in) into the system
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+        //method to prevent user from uploading 2 images with same name
+        private string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                      + "_"
+                      + Guid.NewGuid().ToString().Substring(0, 4)
+                      + Path.GetExtension(fileName);
+        }
 
         // GET: User
         public async Task<IActionResult> Index(string searchUserCity)
@@ -61,6 +76,8 @@ namespace InkInc.Controllers
                 return NotFound();
             }
 
+            UserDetailsViewModel viewModel = new UserDetailsViewModel();
+
             var User = await _context.User
                 .Include(u => u.Parlor)
                 .Include(u => u.Photos)
@@ -70,7 +87,10 @@ namespace InkInc.Controllers
                 return NotFound();
             }
 
-            return View(User);
+            //User defined in viewModel = User defined above
+            viewModel.User = User;
+
+            return View(viewModel);
         }
 
         // GET: User/Create
