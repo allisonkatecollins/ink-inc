@@ -30,10 +30,10 @@ namespace InkInc.Controllers
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: Parlors
-        public async Task<IActionResult> Index(string searchParlorCity)
+        public async Task<IActionResult> Index(string searchParlorLocation)
         {
             //index if nothing has been searched
-            if (string.IsNullOrEmpty(searchParlorCity))
+            if (string.IsNullOrEmpty(searchParlorLocation))
             {
                 var parlors = _context.Parlor;
 
@@ -41,10 +41,11 @@ namespace InkInc.Controllers
             }
 
             //index if something has been searched
-            if (!string.IsNullOrEmpty(searchParlorCity))
+            if (!string.IsNullOrEmpty(searchParlorLocation))
             {
                 var parlors = _context.Parlor
-                    .Where(p => p.City.Contains(searchParlorCity));
+                    .Where(p => p.City.Contains(searchParlorLocation))
+                    .Where(p => p.State.Contains(searchParlorLocation));
 
                 return View(await parlors.ToListAsync());
             }

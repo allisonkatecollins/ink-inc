@@ -31,12 +31,23 @@ namespace InkInc.Areas.Identity.Pages.Account
             var parlors = _context.Parlor;
             List<SelectListItem> parlorOptions = new List<SelectListItem>();
 
-            foreach (Parlor p in parlors)
+            parlorOptions.Insert(0, new SelectListItem
             {
-                SelectListItem li = new SelectListItem("ParlorId", "Name"); //value, text
+                Text = "Select your parlor or create a new one",
+                Value = null,
+                Selected = true
+            });
+
+            foreach (var p in parlors)
+            {
+                //each parlor displayed by name
+                SelectListItem li = new SelectListItem
+                {
+                    Value = p.ParlorId.ToString(),
+                    Text = p.Name
+                };
                 parlorOptions.Add(li);
             }
-
             return parlorOptions;
         }
        
@@ -86,7 +97,8 @@ namespace InkInc.Areas.Identity.Pages.Account
             [MaxLength(500)]
             public string Biography { get; set; }
 
-            public int? ParlorId { get; set; }
+            [Display(Name = "Parlor")]
+            public int ParlorId { get; set; }
 
             public List<SelectListItem> parlorOptions { get; set; }
 
@@ -112,9 +124,16 @@ namespace InkInc.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName,
-                    BaselinePricing = Input.BaselinePricing, PricePerHour = Input.PricePerHour,
-                    InstagramHandle = Input.InstagramHandle, Biography = Input.Biography, ParlorId = Input.ParlorId };
+                var user = new User {
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    BaselinePricing = Input.BaselinePricing,
+                    PricePerHour = Input.PricePerHour,
+                    InstagramHandle = Input.InstagramHandle,
+                    Biography = Input.Biography,
+                    ParlorId = Input.ParlorId };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

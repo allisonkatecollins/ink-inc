@@ -36,6 +36,7 @@ namespace InkInc.Models
         [MaxLength(500)]
         public string Biography { get; set; }
 
+        [Display(Name = "Parlor")]
         public int? ParlorId { get; set; }
 
         public Parlor Parlor { get; set; }

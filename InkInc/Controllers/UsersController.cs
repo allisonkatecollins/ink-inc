@@ -44,10 +44,10 @@ namespace InkInc.Controllers
         }
 
         // GET: User
-        public async Task<IActionResult> Index(string searchUserCity)
+        public async Task<IActionResult> Index(string searchUserLocation)
         {
             //index if nothing has been searched
-            if (string.IsNullOrEmpty(searchUserCity))
+            if (string.IsNullOrEmpty(searchUserLocation))
             {
                 var applicationDbContext = _context.User
                     .Include(u => u.Parlor);
@@ -55,11 +55,12 @@ namespace InkInc.Controllers
             }
 
             //index if something has been searched
-            if (!string.IsNullOrEmpty(searchUserCity)) 
+            if (!string.IsNullOrEmpty(searchUserLocation)) 
             {
                 var applicationDbContext = _context.User
                     .Include(u => u.Parlor)
-                    .Where(u => u.Parlor.City.Contains(searchUserCity));
+                    .Where(u => u.Parlor.City.Contains(searchUserLocation))
+                    .Where(u => u.Parlor.State.Contains(searchUserLocation));
                 return View(await applicationDbContext.ToListAsync());
             }
 
