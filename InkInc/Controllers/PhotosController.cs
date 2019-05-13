@@ -57,57 +57,6 @@ namespace InkInc.Controllers
             return View(photo);
         }
 
-        // GET: Photos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var photo = await _context.Photo.FindAsync(id);
-            if (photo == null)
-            {
-                return NotFound();
-            }
-            return View(photo);
-        }
-
-        // POST: Photos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FilePath,IsDisplayPhoto,UserId")] Photo photo)
-        {
-            if (id != photo.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(photo);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PhotoExists(photo.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(photo);
-        }
-
         // GET: Photos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -131,10 +80,13 @@ namespace InkInc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            //get current logged in user
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             var photo = await _context.Photo.FindAsync(id);
             _context.Photo.Remove(photo);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //after deleting, redirect to current logged in user's details page
+            return RedirectToAction("Details", "Users", new { id = user.Id });
         }
 
         private bool PhotoExists(int id)
