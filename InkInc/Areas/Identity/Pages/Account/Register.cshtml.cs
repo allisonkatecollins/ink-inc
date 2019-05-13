@@ -24,7 +24,7 @@ namespace InkInc.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
-        //populate parlor dropdown list
+        //======= parlor dropdown list ===========
         public List<SelectListItem> PopulateParlorsDropDownList()
         {
             //access db

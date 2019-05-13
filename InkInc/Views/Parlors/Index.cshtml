@@ -17,38 +17,21 @@
     <input type="submit" value="Search" />
 </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hours)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hours)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<hr />
+
+<div class="row">
+@foreach (var item in Model)
+{
+        <div class="card mr-3" className="parlorCard">
+            <div class="card-header">
+                <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
+            </div>
+            <div class="card-body">
+                @Html.DisplayFor(modelItem => item.FullAddress)
+            </div>
+        </div>
+}
+</div>
 
 @if (SignInManager.IsSignedIn(User))
 {
