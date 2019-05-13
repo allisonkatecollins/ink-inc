@@ -33,13 +33,14 @@ namespace InkInc.Areas.Identity.Pages.Account
 
             parlorOptions.Insert(0, new SelectListItem
             {
-                Text = "Select your parlor here or create a new one",
+                Text = "Select your parlor or create a new one",
                 Value = null,
                 Selected = true
             });
 
             foreach (var p in parlors)
             {
+                //each parlor displayed by name
                 SelectListItem li = new SelectListItem
                 {
                     Value = p.ParlorId.ToString(),
@@ -96,6 +97,7 @@ namespace InkInc.Areas.Identity.Pages.Account
             [MaxLength(500)]
             public string Biography { get; set; }
 
+            [Display(Name = "Parlor")]
             public int ParlorId { get; set; }
 
             public List<SelectListItem> parlorOptions { get; set; }
