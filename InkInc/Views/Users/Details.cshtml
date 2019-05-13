@@ -91,6 +91,10 @@
                 <p class="col-sm-auto">
                     <img src="@Url.Content(item.FilePath)" , alt="tattoo" height="300" />
                 </p>
+                @if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
+                {
+                    <a asp-action="Delete" asp-controller="Photos" asp-route-id="@item.Id">Delete</a>
+                } 
             }
         </div>
     }

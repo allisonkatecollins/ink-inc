@@ -91,6 +91,8 @@ namespace InkInc.Controllers
 
             return View(viewModel);
         }
+
+        //============== UPLOAD PHOTOS ====================
         //GET UploadPhoto view - exists in Photos view folder
         public async Task<IActionResult> GetUploadPhoto()
         {
@@ -123,6 +125,7 @@ namespace InkInc.Controllers
                     //instantiate new photo to be sent to db
                     Photo photo = new Photo()
                     {
+                        //tilde makes it a relative path, meaning the browser reads back through wwwroot folder
                         FilePath = "~/images/" + uniqueFileName,
                         UserId = user.Id
                     };
@@ -140,6 +143,7 @@ namespace InkInc.Controllers
             //if none of the above works, just show Details
             return View("Details");
         }
+        //============== END PHOTO UPLOAD =====================
 
         // GET: User/Create
         public async Task<IActionResult> Create()
