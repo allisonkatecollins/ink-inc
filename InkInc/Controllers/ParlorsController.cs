@@ -44,8 +44,7 @@ namespace InkInc.Controllers
             if (!string.IsNullOrEmpty(searchParlorLocation))
             {
                 var parlors = _context.Parlor
-                    .Where(p => p.City.Contains(searchParlorLocation))
-                    .Where(p => p.State.Contains(searchParlorLocation));
+                    .Where(p => p.City.Contains(searchParlorLocation) || p.State.Contains(searchParlorLocation));
 
                 return View(await parlors.ToListAsync());
             }
