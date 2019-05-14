@@ -59,8 +59,7 @@ namespace InkInc.Controllers
             {
                 var applicationDbContext = _context.User
                     .Include(u => u.Parlor)
-                    .Where(u => u.Parlor.City.Contains(searchUserLocation))
-                    .Where(u => u.Parlor.State.Contains(searchUserLocation));
+                    .Where(u => u.Parlor.City.Contains(searchUserLocation) || u.Parlor.State.Contains(searchUserLocation));
                 return View(await applicationDbContext.ToListAsync());
             }
 

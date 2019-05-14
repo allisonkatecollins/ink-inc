@@ -13,46 +13,23 @@
 <h1>Parlors</h1>
 
 <form asp-controller="Parlors" asp-action="Index">
-    <input type="text" name="searchParlorCity" placeholder="Search parlor by city or state" size="25">
+    <input type="text" name="searchParlorLocation" placeholder="Search parlor by city or state" size="25">
     <input type="submit" value="Search" />
 </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hours)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hours)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<hr />
 
-@if (SignInManager.IsSignedIn(User))
+<div class="row">
+@foreach (var item in Model)
 {
-    <div class="form-group">
-        <input type="submit" value="Add new parlor" class="btn btn-secondary" />
-    </div>
+        <div class="card mr-3 mb-3" className="parlorCard">
+            <div class="card-header">
+                <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
+            </div>
+            <div class="card-body">
+                @Html.DisplayFor(modelItem => item.FullAddress)
+            </div>
+        </div>
 }
+</div>
+

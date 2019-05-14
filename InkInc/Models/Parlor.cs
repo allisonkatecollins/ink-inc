@@ -15,6 +15,7 @@ namespace InkInc.Models
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Address")]
         public string StreetAddress { get; set; }
 
         [Required]
@@ -42,12 +43,15 @@ namespace InkInc.Models
         }
 
         [Required]
+        [Display(Name = "Opening Time")]
         public string OpenTime { get; set; }
 
         [Required]
+        [Display(Name = "Closing Time")]
         public string CloseTime { get; set; }
 
         [Required]
+        [Display(Name = "Days Open")]
         public string DaysOpen { get; set; }
 
         [Display(Name = "Hours of Operation")]
@@ -59,10 +63,7 @@ namespace InkInc.Models
             }
         }
 
-        [Required]
-        public string OwnerId { get; set; }
-
-        [Display(Name = "Contact Us")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         public virtual ICollection<User> Users { get; set; } 

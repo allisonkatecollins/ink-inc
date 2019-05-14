@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InkInc.Migrations
 {
-    public partial class Update : Migration
+    public partial class DeleteOwnerId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,7 +35,6 @@ namespace InkInc.Migrations
                     OpenTime = table.Column<string>(nullable: false),
                     CloseTime = table.Column<string>(nullable: false),
                     DaysOpen = table.Column<string>(nullable: false),
-                    OwnerId = table.Column<string>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -209,24 +208,28 @@ namespace InkInc.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Parlor",
-                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "OwnerId", "PhoneNumber", "State", "StreetAddress" },
-                values: new object[] { 1, "Nashville", "6:00 PM", "Monday - Saturday", "Black Dahlia Studios", "9:00 AM", "b3eb15c2-60e3-4a75-930e-ce1126778bd9", "(615)-555-5555", "Tennessee", "1200 Forest Ave" });
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "BaselinePricing", "Biography", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "InstagramHandle", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "ParlorId", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PricePerHour", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "0402a486-a1f7-4eaf-96ef-66dc25142242", 0, 100, "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.", "16fe4bb9-b6bf-49e4-89ae-ae9781ba95a4", "maryremo@gmail.com", true, "Mary", "@sodajerk", "Remo", false, null, "MARYREMO@GMAIL.COM", "MARYREMO@GMAIL.COM", null, "AQAAAAEAACcQAAAAEBti2SvSxwycc8QiOz+FiCqgwu0RELqdXbbteZm3aSbHGGLCb5UDtxk4nOk22pFGbg==", null, false, 60, "fcb926f1-2c5d-4372-8df3-0a9b9c33d7c6", false, "maryremo@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Parlor",
-                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "OwnerId", "PhoneNumber", "State", "StreetAddress" },
-                values: new object[] { 2, "Nashville", "8:00 PM", "Tuesday - Saturday", "Electric Hand", "10:00 AM", "86cb57f5-e366-457b-a8f1-e8c3cb911892", "(615)-555-5555", "Tennessee", "300 Rainbow Dr" });
+                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "PhoneNumber", "State", "StreetAddress" },
+                values: new object[] { 2, "Nashville", "8:00 PM", "Tuesday - Saturday", "Electric Hand", "10:00 AM", "(615)-555-5555", "Tennessee", "300 Rainbow Dr" });
+
+            migrationBuilder.InsertData(
+                table: "Parlor",
+                columns: new[] { "ParlorId", "City", "CloseTime", "DaysOpen", "Name", "OpenTime", "PhoneNumber", "State", "StreetAddress" },
+                values: new object[] { 1, "Atlanta", "6:00 PM", "Monday - Saturday", "Black Dahlia Studios", "9:00 AM", "(615)-555-5555", "Georgia", "1200 Forest Ave" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BaselinePricing", "Biography", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "InstagramHandle", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "ParlorId", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PricePerHour", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "b3eb15c2-60e3-4a75-930e-ce1126778bd9", 0, 50, "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.", "4288c85c-df1d-4cd1-8150-3c7cb0dd5e62", "allisonkatecollins@gmail.com", true, "Allison", "@allisonkatecollins", "Collins", false, null, "ALLISONKATECOLLINS@GMAIL.COM", "ALLISONKATECOLLINS@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEPI4NRigBeXDD4qysoSiwD1URk2ZmAYaRjhjR228nlH+mIdjZtwJRLSEHpTrFJmtfw==", null, false, 80, "91208fb2-f5a9-4c26-823f-d286f608e67d", false, "allisonkatecollins@gmail.com" },
-                    { "1cff67a9-286c-444a-92cc-234ea71d700b", 0, 60, "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.", "72ceff71-0ff5-4660-9144-6715931379dd", "asiacarter@gmail.com", true, "Asia", "@asiacarter", "Carter", false, null, "ASIACARTER@GMAIL.COM", "ASIACARTER@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEMpup/BL74qWE8jLoHBpSi40uGkHwaGPKR/TJZujoqPLwyUK4YCIdCSzaXWbFsSBQA==", null, false, 50, "d1cbb227-6b35-46d5-8cef-6ba7306b9ea8", false, "asiacarter@gmail.com" },
-                    { "3ead6e01-b4d0-48ef-8ff7-41316de76fcb", 0, 25, "I specialize in black-and-white tattoos of capybaras.", "6b96744e-e340-47e6-96bf-8a094afbe151", "brj@gmail.com", true, "Brittany", "@itsbrittany", "Ramos-Janeway", false, null, "BRJ@GMAIL.COM", "BRJ@GMAIL.COM", 2, "AQAAAAEAACcQAAAAEDuwhiYiRslo9gyt7v87an0JN6AT4hkaXizvypf6eakxz4BT4VCvmYqP45gR1+6K7Q==", null, false, 50, "6e77b084-77ec-4b39-bedf-4ce8b1890de9", false, "brj@gmail.com" },
-                    { "86cb57f5-e366-457b-a8f1-e8c3cb911892", 0, 100, "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.", "9db07874-13e3-4f3c-b369-a6e6c5610d35", "maryremo@gmail.com", true, "Mary", "@sodajerk", "Remo", false, null, "MARYREMO@GMAIL.COM", "MARYREMO@GMAIL.COM", 2, "AQAAAAEAACcQAAAAENflSSBV3/4b8gBs1b41w0fOw2Ti12u/FZbqrErpkdlzR84UXGecVmOL9N9X13vDqw==", null, false, 60, "6be2bc08-4d07-4201-bc36-bf080a77361e", false, "maryremo@gmail.com" }
+                    { "9eb5a457-17b0-4f58-b76d-6f3448575733", 0, 50, "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.", "182192f3-4c66-4c73-b9d9-d1605fb23e2d", "allisonkatecollins@gmail.com", true, "Allison", "@allisonkatecollins", "Collins", false, null, "ALLISONKATECOLLINS@GMAIL.COM", "ALLISONKATECOLLINS@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEM9RTf0ucc/4Gox8oeJFfdCPcR2yDTXudrs2WBzyolT23fVcAMZKnUYEbYmK/sfXwA==", null, false, 80, "7749e9db-9f06-47e5-9a7a-08f7d75d6a71", false, "allisonkatecollins@gmail.com" },
+                    { "d5067774-8cf5-44c1-acba-cdf79c125414", 0, 60, "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.", "e88d8834-25d0-4e78-9172-01d34fb014f8", "asiacarter@gmail.com", true, "Asia", "@asiacarter", "Carter", false, null, "ASIACARTER@GMAIL.COM", "ASIACARTER@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEOluouyIA5otG9ORFcfjflzdF4nWrdvO229ZJsQkF+tzU1oiNNQD4qbDLd21rxypYw==", null, false, 50, "67a7c04f-1f09-4bf5-8f11-07c6160b28e4", false, "asiacarter@gmail.com" },
+                    { "5661114f-a785-4d5c-8ee8-20eb6366190c", 0, 25, "I specialize in black-and-white tattoos of capybaras.", "dc5b2a5f-658d-44c5-8ea9-650cf89a2bed", "brj@gmail.com", true, "Brittany", "@itsbrittany", "Ramos-Janeway", false, null, "BRJ@GMAIL.COM", "BRJ@GMAIL.COM", 2, "AQAAAAEAACcQAAAAEBHqg/DH4O3ydOfFKgBRobkdc4TKVSGLGdOi6NlFY4tPHajzPQP22KdYvavc9gD7dA==", null, false, 50, "f0ce7a14-719d-4390-8ddf-0ecf6937ae81", false, "brj@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -234,16 +237,23 @@ namespace InkInc.Migrations
                 columns: new[] { "Id", "FilePath", "IsDisplayPhoto", "UserId" },
                 values: new object[,]
                 {
-                    { 3, "~/images/jeff1.jpg", false, "b3eb15c2-60e3-4a75-930e-ce1126778bd9" },
-                    { 4, "~/images/jeff2.jpg", false, "b3eb15c2-60e3-4a75-930e-ce1126778bd9" },
-                    { 9, "~/images/jeff3.jpg", false, "b3eb15c2-60e3-4a75-930e-ce1126778bd9" },
-                    { 10, "~/images/jeff4.jpg", false, "b3eb15c2-60e3-4a75-930e-ce1126778bd9" },
-                    { 7, "~/images/wedding1.jpg", false, "1cff67a9-286c-444a-92cc-234ea71d700b" },
-                    { 8, "~/images/wedding2.jpg", false, "1cff67a9-286c-444a-92cc-234ea71d700b" },
-                    { 1, "~/images/capybara1.jpg", false, "3ead6e01-b4d0-48ef-8ff7-41316de76fcb" },
-                    { 2, "~/images/capybara2.jpg", false, "3ead6e01-b4d0-48ef-8ff7-41316de76fcb" },
-                    { 5, "~/images/tenn1.jpg", false, "86cb57f5-e366-457b-a8f1-e8c3cb911892" },
-                    { 6, "~/images/tenn2.jpg", false, "86cb57f5-e366-457b-a8f1-e8c3cb911892" }
+                    { 5, "~/images/tenn1.jpg", false, "0402a486-a1f7-4eaf-96ef-66dc25142242" },
+                    { 6, "~/images/tenn2.jpg", false, "0402a486-a1f7-4eaf-96ef-66dc25142242" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Photo",
+                columns: new[] { "Id", "FilePath", "IsDisplayPhoto", "UserId" },
+                values: new object[,]
+                {
+                    { 3, "~/images/jeff1.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
+                    { 4, "~/images/jeff2.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
+                    { 9, "~/images/jeff3.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
+                    { 10, "~/images/jeff4.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
+                    { 7, "~/images/wedding1.jpg", false, "d5067774-8cf5-44c1-acba-cdf79c125414" },
+                    { 8, "~/images/wedding2.jpg", false, "d5067774-8cf5-44c1-acba-cdf79c125414" },
+                    { 1, "~/images/capybara1.jpg", false, "5661114f-a785-4d5c-8ee8-20eb6366190c" },
+                    { 2, "~/images/capybara2.jpg", false, "5661114f-a785-4d5c-8ee8-20eb6366190c" }
                 });
 
             migrationBuilder.CreateIndex(

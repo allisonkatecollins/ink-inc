@@ -44,8 +44,7 @@ namespace InkInc.Controllers
             if (!string.IsNullOrEmpty(searchParlorLocation))
             {
                 var parlors = _context.Parlor
-                    .Where(p => p.City.Contains(searchParlorLocation))
-                    .Where(p => p.State.Contains(searchParlorLocation));
+                    .Where(p => p.City.Contains(searchParlorLocation) || p.State.Contains(searchParlorLocation));
 
                 return View(await parlors.ToListAsync());
             }
@@ -84,7 +83,7 @@ namespace InkInc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ParlorId,Name,StreetAddress,City,State,OpenTime,CloseTime,DaysOpen,OwnerId")] Parlor parlor)
+        public async Task<IActionResult> Create([Bind("ParlorId,Name,StreetAddress,City,State,OpenTime,CloseTime,DaysOpen")] Parlor parlor)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +115,7 @@ namespace InkInc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ParlorId,Name,StreetAddress,City,State,OpenTime,CloseTime,DaysOpen,OwnerId")] Parlor parlor)
+        public async Task<IActionResult> Edit(int id, [Bind("ParlorId,Name,StreetAddress,City,State,OpenTime,CloseTime,DaysOpen")] Parlor parlor)
         {
             if (id != parlor.ParlorId)
             {

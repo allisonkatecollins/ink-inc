@@ -89,7 +89,7 @@ namespace InkInc.Data
             PricePerHour = 60,
             InstagramHandle = "@sodajerk",
             Biography = "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.",
-            ParlorId = 2,
+            ParlorId = null,
             EmailConfirmed = true,
             LockoutEnabled = false,
             SecurityStamp = Guid.NewGuid ().ToString ("D")
@@ -101,11 +101,10 @@ namespace InkInc.Data
         modelBuilder.Entity<Parlor> ().HasData (
             new Parlor () {
                 ParlorId = 1,
-                    OwnerId = allison.Id,
                     Name = "Black Dahlia Studios",
                     StreetAddress = "1200 Forest Ave",
-                    City = "Nashville",
-                    State = "Tennessee",
+                    City = "Atlanta",
+                    State = "Georgia",
                     OpenTime = "9:00 AM",
                     CloseTime = "6:00 PM",
                     PhoneNumber = "(615)-555-5555",
@@ -113,7 +112,6 @@ namespace InkInc.Data
             },
             new Parlor () {
                 ParlorId = 2,
-                    OwnerId = mary.Id,
                     Name = "Electric Hand",
                     StreetAddress = "300 Rainbow Dr",
                     City = "Nashville",
