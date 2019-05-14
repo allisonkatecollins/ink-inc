@@ -27,7 +27,8 @@
                 <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
             </div>
             <div class="card-body">
-                @Html.DisplayFor(modelItem => item.FullAddress)
+                @Html.DisplayFor(modelItem => item.StreetAddress) |
+                @Html.DisplayFor(modelItem => item.CityAndState)
             </div>
         </div>
 }

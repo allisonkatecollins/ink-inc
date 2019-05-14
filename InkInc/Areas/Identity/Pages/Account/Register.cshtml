@@ -52,13 +52,8 @@
                 @Html.LabelFor(model => Model.Input.ParlorId, htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownListFor(model => Model.Input.ParlorId, new SelectList(Model.PopulateParlorsDropDownList(), "Value", "Text"), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Input.ParlorId, "", new { @class = "text-danger" })
+                Leave this section blank if you don't see your parlor listed. You'll be able to create a new one later.
             </div>
-            @*<div class="form-group">
-                <label asp-for="Input.ParlorId"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                <input type="submit" value="Add new parlor" class="btn btn-secondary" />
-            </div>*@
             <div class="form-group">
                 <label asp-for="Input.Password"></label>
                 <input asp-for="Input.Password" class="form-control" />
