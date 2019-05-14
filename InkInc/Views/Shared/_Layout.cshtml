@@ -49,10 +49,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Parlors" asp-action="Index">View Parlors</a>
                         </li>
 
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Details" asp-route-id="@currentUser.Id">Profile</a></li>
-                        }
+                @if (SignInManager.IsSignedIn(User))
+                     {
+                         <li><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Details" asp-route-id="@currentUser.Id">Profile</a></li>
+                     }
 
                     </ul>
                 </div>

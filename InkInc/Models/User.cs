@@ -11,11 +11,6 @@ namespace InkInc.Models
     //the colon enables the user to inherit all the properties of IdentityUser, which were automatically generated
     public class User : IdentityUser
     {
-        public User()
-        {
-
-        }
-
         [Required]
         [Display(Name = "First name")]
         public string FirstName { get; set; }

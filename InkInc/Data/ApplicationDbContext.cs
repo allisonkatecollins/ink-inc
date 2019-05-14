@@ -101,7 +101,6 @@ namespace InkInc.Data
         modelBuilder.Entity<Parlor> ().HasData (
             new Parlor () {
                 ParlorId = 1,
-                    OwnerId = allison.Id,
                     Name = "Black Dahlia Studios",
                     StreetAddress = "1200 Forest Ave",
                     City = "Atlanta",
@@ -113,7 +112,6 @@ namespace InkInc.Data
             },
             new Parlor () {
                 ParlorId = 2,
-                    OwnerId = mary.Id,
                     Name = "Electric Hand",
                     StreetAddress = "300 Rainbow Dr",
                     City = "Nashville",

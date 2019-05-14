@@ -13,7 +13,7 @@
 <h1>Parlors</h1>
 
 <form asp-controller="Parlors" asp-action="Index">
-    <input type="text" name="searchParlorCity" placeholder="Search parlor by city or state" size="25">
+    <input type="text" name="searchParlorLocation" placeholder="Search parlor by city or state" size="25">
     <input type="submit" value="Search" />
 </form>
 
@@ -22,7 +22,7 @@
 <div class="row">
 @foreach (var item in Model)
 {
-        <div class="card mr-3" className="parlorCard">
+        <div class="card mr-3 mb-3" className="parlorCard">
             <div class="card-header">
                 <a asp-action="Details" asp-route-id="@item.ParlorId">@item.Name</a>
             </div>
