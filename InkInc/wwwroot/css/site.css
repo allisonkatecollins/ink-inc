@@ -54,3 +54,20 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* delete images button */
+
+.deleteBtn {
+    position: absolute;
+    width: 500px;
+    left: 0;
+    top: 180px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+
+.portfolioPic:hover .deleteBtn {
+    opacity: 1;
+}
