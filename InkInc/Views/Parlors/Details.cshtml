@@ -1,7 +1,22 @@
 ﻿@model InkInc.Models.Parlor
 
+@using InkInc.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
+
 @{
     ViewData["Title"] = "Details";
+}
+
+@{ var currentUser = await UserManager.GetUserAsync(User);}
+
+@if (SignInManager.IsSignedIn(User) && Model.Users.Contains(currentUser))
+{
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.ParlorId">Edit Parlor</a>
+    </td>
 }
 
 <h1>@Html.DisplayFor(model => model.Name)</h1>
@@ -30,7 +45,7 @@
     </dl>
 </div>
 @if (Model.Users != null)
-{ 
+{
     <h4>
         Our Artists
     </h4>
@@ -38,11 +53,11 @@
     <table class="table">
         @foreach (var item in Model.Users)
         {
-        <tr>
-            <td>
-                <a asp-controller="Users" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <a asp-controller="Users" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+                </td>
+            </tr>
         }
     </table>
 }

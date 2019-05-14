@@ -30,11 +30,13 @@
 {
     <h1>@Html.DisplayFor(model => model.User.FullName)</h1>
 
-    <form asp-action="Create" asp-controller="Parlors">
-        <input type="hidden" asp-for="User.Id" />
-        <input type="submit" value="Add Parlor" class="btn btn-success" />
-        <!--<a asp-action="Create" asp-controller="Parlors" asp-route-id="Model.UserId">Add Parlor</a>-->
-    </form>
+    @if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
+    {
+        <form asp-action="Create" asp-controller="Parlors">
+            <input type="hidden" asp-for="User.Id" />
+            <input type="submit" value="Add Parlor" class="btn btn-success" />
+        </form>
+    }
 }
 
 <hr />
