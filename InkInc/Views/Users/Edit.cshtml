@@ -1,5 +1,7 @@
 ﻿@model InkInc.Models.User
 
+@using InkInc.Models
+
 @{
     ViewData["Title"] = "Edit";
 }
@@ -44,8 +46,10 @@
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ParlorId" class="control-label">Parlor</label>
-                <select asp-for="ParlorId" class="form-control" asp-items="ViewBag.ParlorId"></select>
+                @Html.LabelFor(model => model.ParlorId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => Model.ParlorId, new SelectList(RegisterModel.ParlorsEditList(), "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ParlorId, "", new { @class = "text-danger" })
+                Leave this section blank if you don't see your parlor listed. You'll be able to create a new one later.
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

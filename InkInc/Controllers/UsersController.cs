@@ -43,6 +43,34 @@ namespace InkInc.Controllers
                       + Path.GetExtension(fileName);
         }
 
+        //======= parlor dropdown list ===========
+        public List<SelectListItem> ParlorsEditList()
+        {
+            //access db
+            var parlors = _context.Parlor;
+            List<SelectListItem> parlorOptions = new List<SelectListItem>();
+
+            //gives option of selecting a ParlorId value of null
+            parlorOptions.Insert(0, new SelectListItem
+            {
+                Text = "--Select your parlor--",
+                Value = null,
+                Selected = true
+            });
+
+            foreach (var p in parlors)
+            {
+                //each parlor displayed by name
+                SelectListItem li = new SelectListItem
+                {
+                    Value = p.ParlorId.ToString(),
+                    Text = p.Name
+                };
+                parlorOptions.Add(li);
+            }
+            return parlorOptions;
+        }
+
         // GET: User
         public async Task<IActionResult> Index(string searchUserLocation)
         {
@@ -66,6 +94,7 @@ namespace InkInc.Controllers
             return View();
         }
 
+        // ====== USER PROFILE =========
         // GET PROFILE: User/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -99,8 +128,8 @@ namespace InkInc.Controllers
             return View("../Photos/UploadPhoto", viewModel);
         }
 
-        //POST: User/Details/5
-        //this method is very similar to User/Create method below
+        //POST PHOTO: User/Details/GetUploadPhoto
+        //this method is very similar to User/Create method scaffolded by ASP.NET
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UploadPhoto(UserDetailsViewModel viewModel)
@@ -120,7 +149,15 @@ namespace InkInc.Controllers
                     //save uploaded images to "images" folder in wwwroot folder
                     var uploads = Path.Combine(_hostEnviro.WebRootPath, "images");
                     var filePath = Path.Combine(uploads, uniqueFileName);
-                    viewModel.ImageToSave.CopyTo(new FileStream(filePath, FileMode.Create));
+
+                    //filestream = representation of bytes of a file
+                    //using block closes the FileStream so the OS knows it's finished using the file
+                    //if not closed, could throw an error when I try to delete a photo
+                    using (var portfolioImg = new FileStream(filePath, FileMode.Create))
+                    {
+                        viewModel.ImageToSave.CopyTo(portfolioImg);
+                    }
+
                     //instantiate new photo to be sent to db
                     Photo photo = new Photo()
                     {
@@ -144,41 +181,7 @@ namespace InkInc.Controllers
         }
         //============== END PHOTO UPLOAD =====================
 
-        // GET: User/Create
-        public async Task<IActionResult> Create()
-        {
-            //get current logged in user
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name");
-            //return specified user
-            return View(user);
-        }
-
-        // POST: User/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,BaselinePricing,PricePerHour,InstagramHandle,Biography,ParlorId")] User User)
-        {
-            //User and UserId does exist within Identity User model, but are not included in registration; this prevents from throwing an error
-            ModelState.Remove("User");
-            ModelState.Remove("UserId");
-
-            if (ModelState.IsValid)
-            {
-                //fetch user asynchronously
-                var user = await _userManager.GetUserAsync(HttpContext.User);
-                //add back User and UserId that were removed above
-                _context.Add(User);
-                await _context.SaveChangesAsync();
-                //return to artist index
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
-            return View(User);
-        }
-
+        //======== EDIT PROFILE ================
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
@@ -196,7 +199,7 @@ namespace InkInc.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParlorId"] = new SelectList(_context.Parlor, "ParlorId", "Name", User.ParlorId);
+            ViewData["ParlorId"] = new SelectList (_context.Parlor, "ParlorId", "Name", User.ParlorId);
             return View(User);
         }
 
