@@ -83,7 +83,7 @@ namespace InkInc.Controllers
             }
 
             //index if something has been searched
-            if (!string.IsNullOrEmpty(searchUserLocation)) 
+            if (!string.IsNullOrEmpty(searchUserLocation))
             {
                 var applicationDbContext = _context.User
                     .Include(u => u.Parlor)
@@ -173,7 +173,7 @@ namespace InkInc.Controllers
                 }
 
                 //return to Details page with images; access URL of specific user
-                return RedirectToAction(nameof(Details), new { id = user.Id});
+                return RedirectToAction(nameof(Details), new { id = user.Id });
             }
 
             //if none of the above works, just show Details
@@ -188,10 +188,33 @@ namespace InkInc.Controllers
             //access user that's logged in
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
 
+
             //edit only available for logged in user's profile
             if (id == null || id != currentUser.Id)
             {
                 return NotFound();
+            }
+
+            //null option for parlor edit
+            var parlors = _context.Parlor.ToList();
+
+            List<SelectListItem> ParlorOptions = new List<SelectListItem>();
+
+            ParlorOptions.Insert(0, new SelectListItem
+            {
+                Text = "No parlor",
+                Value = null,
+                Selected = true
+            });
+
+            foreach (var p in parlors)
+            {
+                SelectListItem li = new SelectListItem
+                {
+                    Value = p.ParlorId.ToString(),
+                    Text = p.Name
+                };
+                ParlorOptions.Add(li);
             }
 
             var User = await _context.User.FindAsync(id);
@@ -199,8 +222,21 @@ namespace InkInc.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParlorId"] = new SelectList (_context.Parlor, "ParlorId", "Name", User.ParlorId);
-            return View(User);
+
+            //variables from view model equals local variables
+            UserEditViewModel viewModel = new UserEditViewModel
+            {
+                User = User,
+                ParlorOptions = ParlorOptions
+            };
+            return View(viewModel);
+
+        //} else
+        //{
+        //    return View();
+        //}
+        //    ViewData["ParlorId"] = new SelectList (_context.Parlor, "ParlorId", "Name", User.ParlorId);
+        //    return View(User);
         }
 
         // POST: User/Edit/5
