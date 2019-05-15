@@ -67,7 +67,6 @@ body {
     transition: opacity .35s ease;
 }
 
-
-.portfolioPic:hover .deleteBtn {
+.container:hover .deleteBtn {
     opacity: 1;
 }
