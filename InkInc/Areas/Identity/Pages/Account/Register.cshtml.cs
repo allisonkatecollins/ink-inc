@@ -31,6 +31,7 @@ namespace InkInc.Areas.Identity.Pages.Account
             var parlors = _context.Parlor;
             List<SelectListItem> parlorOptions = new List<SelectListItem>();
 
+            //gives option of selecting a ParlorId value of null
             parlorOptions.Insert(0, new SelectListItem
             {
                 Text = "--Select your parlor--",

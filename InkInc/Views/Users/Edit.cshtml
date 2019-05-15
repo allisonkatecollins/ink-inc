@@ -1,4 +1,6 @@
-﻿@model InkInc.Models.User
+﻿@model InkInc.Models.View_Models.UserEditViewModel
+
+@using InkInc.Models
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,40 +14,41 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="User.Id" />
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <label asp-for="User.FirstName" class="control-label"></label>
+                <input asp-for="User.FirstName" class="form-control" />
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+                <label asp-for="User.LastName" class="control-label"></label>
+                <input asp-for="User.LastName" class="form-control" />
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BaselinePricing" class="control-label"></label>
-                <input asp-for="BaselinePricing" class="form-control" />
-                <span asp-validation-for="BaselinePricing" class="text-danger"></span>
+                <label asp-for="User.BaselinePricing" class="control-label"></label>
+                <input asp-for="User.BaselinePricing" class="form-control" />
+                <span asp-validation-for="User.BaselinePricing" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PricePerHour" class="control-label"></label>
-                <input asp-for="PricePerHour" class="form-control" />
-                <span asp-validation-for="PricePerHour" class="text-danger"></span>
+                <label asp-for="User.PricePerHour" class="control-label"></label>
+                <input asp-for="User.PricePerHour" class="form-control" />
+                <span asp-validation-for="User.PricePerHour" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InstagramHandle" class="control-label"></label>
-                <input asp-for="InstagramHandle" class="form-control" />
-                <span asp-validation-for="InstagramHandle" class="text-danger"></span>
+                <label asp-for="User.InstagramHandle" class="control-label"></label>
+                <input asp-for="User.InstagramHandle" class="form-control" />
+                <span asp-validation-for="User.InstagramHandle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Biography" class="control-label"></label>
-                @Html.TextAreaFor(model => model.Biography, new { rows = 10, cols = 50 })
-                <span asp-validation-for="Biography" class="text-danger"></span>
+                <label asp-for="User.Biography" class="control-label"></label>
+                @Html.TextAreaFor(model => model.User.Biography, new { rows = 10, cols = 50 })
+                <span asp-validation-for="User.Biography" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ParlorId" class="control-label">Parlor</label>
-                <select asp-for="ParlorId" class="form-control" asp-items="ViewBag.ParlorId"></select>
+                @Html.LabelFor(m => Model.User.ParlorId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(m => Model.User.ParlorId, new SelectList(Model.ParlorOptions, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.User.ParlorId, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -55,7 +58,7 @@
 </div>
 
 <div>
-    <a asp-action="Details" asp-route-id="@Model.Id">Back to Profile</a>
+    <a asp-action="Details"  asp-route-id="@Model.User.Id">Back to Profile</a>
 </div>
 
 @section Scripts {
