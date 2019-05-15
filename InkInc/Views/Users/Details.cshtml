@@ -101,17 +101,27 @@
         Portfolio
     </h4>
 
-    <div class="row" classname="container">
+    <div class="row">
         @foreach (var item in Model.User.Photos)
         {
-            <p class="col-sm-auto">
-                <img src="@Url.Content(item.FilePath)" alt="tattoo" height="300" />
-            </p>
-
             @if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
             {
-                <div classname="deleteBtn">                         
-                    <a asp-action="Delete" asp-controller="Photos" asp-route-id="@item.Id" class="btn btn-sm"> <img src="~/icons/rubbish-bin.png" height="40" alt="delete" >  </a>
+                <div class="img-container">
+                    <p class="col-sm-auto">
+                        <img class="portfolioImg" src="@Url.Content(item.FilePath)" alt="tattoo" />
+                        <span class="button-delete">
+                            <a asp-action="Delete" asp-controller="Photos" asp-route-id="@item.Id" class="btn btn-sm "> <img src="~/icons/rubbish-bin.png" height="40" alt="delete"> </a>
+                        </span>
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div class="other-img-container">
+                    <p class="col-sm-auto">
+                        <img class="otherPortfolioImg" src="@Url.Content(item.FilePath)" alt="tattoo" />
+
+                    </p>
                 </div>
             }
         }
