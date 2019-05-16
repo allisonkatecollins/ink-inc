@@ -28,19 +28,15 @@
 
 @if (Model.User.ParlorId == null)
 {
-    <h1>@Html.DisplayFor(model => model.User.FullName)</h1>
+    <h1 class="title">@Html.DisplayFor(model => model.User.FullName)</h1>
 
     @if (SignInManager.IsSignedIn(User) && Model.User.Id == currentUser.Id)
     {
-        <form asp-action="Create" asp-controller="Parlors">
-            <input type="hidden" asp-for="User.Id" />
-            <input type="submit" value="Add Parlor" class="btn btn-success" />
-        </form>
+    <h4><a class="text-secondary" asp-controller="Parlors" asp-action="Create">Add Parlor</a></h4>
     }
 }
 
 <hr />
-
 
 <div>
     @Html.DisplayFor(model => model.User.Biography)

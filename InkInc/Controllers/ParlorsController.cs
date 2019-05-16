@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using InkInc.Data;
 using InkInc.Models;
 using Microsoft.AspNetCore.Identity;
-
+using InkInc.Models.View_Models;
 
 namespace InkInc.Controllers
 {
@@ -73,9 +73,17 @@ namespace InkInc.Controllers
         }
 
         // GET: Parlors/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            ParlorCreateViewModel viewModel = new ParlorCreateViewModel();
+
+            //fetch user asynchronously
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            //User defined in view model = User defined above; attach user to view model
+            viewModel.User = user;
+
+            return View(viewModel);
         }
 
         // POST: Parlors/Create
@@ -83,15 +91,21 @@ namespace InkInc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ParlorId,Name,StreetAddress,City,State,OpenTime,CloseTime,DaysOpen,PhoneNumber")] Parlor parlor)
+        public async Task<IActionResult> Create([Bind("ParlorId,Name,StreetAddress,City,State,OpenTime,CloseTime,DaysOpen,PhoneNumber")] ParlorCreateViewModel viewModel)
         {
+            //fetch user asynchronously
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            //User defined in view model = User defined above; attach user to view model
+            viewModel.User = user;
+
             if (ModelState.IsValid)
             {
-                _context.Add(parlor);
+                _context.Add(viewModel.Parlor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(parlor);
+            return View(viewModel);
         }
 
         // GET: Parlors/Edit/5
