@@ -125,6 +125,13 @@ namespace InkInc.Controllers
         public async Task<IActionResult> GetUploadPhoto()
         {
             UserDetailsViewModel viewModel = new UserDetailsViewModel();
+
+            //fetch user asynchronously
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            //User defined in viewModel = User defined above; attach user to view model
+            viewModel.User = user;
+
             return View("../Photos/UploadPhoto", viewModel);
         }
 
