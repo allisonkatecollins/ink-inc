@@ -99,9 +99,22 @@ namespace InkInc.Controllers
             //User defined in view model = User defined above; attach user to view model
             viewModel.User = user;
 
+            //create and set new parlor to be sent to the DB
+            Parlor newParlor = new Parlor()
+            {
+                Name = viewModel.Name,
+                StreetAddress = viewModel.StreetAddress,
+                City = viewModel.City,
+                State = viewModel.State,
+                OpenTime = viewModel.OpenTime,
+                CloseTime = viewModel.CloseTime,
+                DaysOpen = viewModel.DaysOpen,
+                PhoneNumber = viewModel.PhoneNumber
+            };
+
             if (ModelState.IsValid)
             {
-                _context.Add(viewModel.Parlor);
+                _context.Add(newParlor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
