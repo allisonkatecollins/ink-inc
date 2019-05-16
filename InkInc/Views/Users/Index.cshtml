@@ -24,26 +24,28 @@
     {
         @if (item.ParlorId != null)
         {
-            <div class="card mr-3 mb-3" className="artistCard">
-                <div class="card-header" style="background-color:cadetblue">
-                    <a class="text-white" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
-                </div>
-                <div class="card-body">
-                    @Html.DisplayFor(modelItem => item.Parlor.Name) <br/> <hr/>
-                    @Html.DisplayFor(modelItem => item.Parlor.CityAndState)
-                </div>
-            </div>
+    <div class="card mr-3 mb-3">
+        <img class="card-img-top" id="artist-card" src="~/icons/dagger.jpg" alt="Card image">
+        <div class="card-header" style="background-color:#DB582C">
+            <a class="text-white" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+        </div>
+        <div class="card-body">
+            @Html.DisplayFor(modelItem => item.Parlor.Name) <br /> <hr />
+            @Html.DisplayFor(modelItem => item.Parlor.CityAndState)
+        </div>
+    </div>
         }
         @if (item.ParlorId == null)
         {
-            <div class="card mr-3 mb-3" className="artistCard">
-                <div class="card-header" style="background-color:cadetblue">
-                    <a class="text-white" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
-                </div>
-                <div class="card-body">
-                    No parlor information provided
-                </div>
-            </div>
+    <div class="card mr-3 mb-3">
+        <img class="card-img-top" id="artist-card" src="~/icons/dagger.jpg" alt="Card image">
+        <div class="card-header" style="background-color:#DB582C">
+            <a class="text-white" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+        </div>
+        <div class="card-body">
+            No parlor info provided
+        </div>
+    </div>
         }
     }
 </div>
