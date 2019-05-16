@@ -90,7 +90,6 @@ body {
     text-align: center;
 }
 
-/* title font */
 .main-title {
     font-family: 'Rye', cursive;
     text-align: center;
@@ -104,4 +103,14 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#artist-card {
+    background-size: cover;
+    height: 75px;
+    width: auto;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0px;
+    border-radius: 0px;
 }
