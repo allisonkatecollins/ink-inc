@@ -51,7 +51,7 @@ namespace InkInc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FilePath,IsDisplayPhoto,UserId")] Photo photo)
+        public async Task<IActionResult> Create([Bind("Id,FilePath,UserId")] Photo photo)
         {
             if (ModelState.IsValid)
             {

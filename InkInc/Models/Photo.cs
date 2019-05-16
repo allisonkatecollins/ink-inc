@@ -13,8 +13,6 @@ namespace InkInc.Models
         [Display(Name = "Upload a photo of your work:")]
         public string FilePath { get; set; }
 
-        public bool IsDisplayPhoto { get; set; }
-
         public string UserId { get; set; }
     }
 }

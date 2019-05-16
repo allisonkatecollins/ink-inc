@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InkInc.Migrations
 {
-    public partial class DeleteOwnerId : Migration
+    public partial class UpdatePhoto : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -193,7 +193,6 @@ namespace InkInc.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FilePath = table.Column<string>(nullable: true),
-                    IsDisplayPhoto = table.Column<bool>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -210,7 +209,7 @@ namespace InkInc.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BaselinePricing", "Biography", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "InstagramHandle", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "ParlorId", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PricePerHour", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "0402a486-a1f7-4eaf-96ef-66dc25142242", 0, 100, "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.", "16fe4bb9-b6bf-49e4-89ae-ae9781ba95a4", "maryremo@gmail.com", true, "Mary", "@sodajerk", "Remo", false, null, "MARYREMO@GMAIL.COM", "MARYREMO@GMAIL.COM", null, "AQAAAAEAACcQAAAAEBti2SvSxwycc8QiOz+FiCqgwu0RELqdXbbteZm3aSbHGGLCb5UDtxk4nOk22pFGbg==", null, false, 60, "fcb926f1-2c5d-4372-8df3-0a9b9c33d7c6", false, "maryremo@gmail.com" });
+                values: new object[] { "c19dab41-531c-4849-8b9a-5ba86434b3db", 0, 100, "I grew up in Nashville and want to keep the Volunteer tradition alive. Ask me about my Rockytop Special.", "33f229f4-b2f9-41b0-93dc-8a86b5ba76fe", "maryremo@gmail.com", true, "Mary", "@sodajerk", "Remo", false, null, "MARYREMO@GMAIL.COM", "MARYREMO@GMAIL.COM", null, "AQAAAAEAACcQAAAAEBZ70hb5DcvN98I5YODB64iQgAmZUmC03TEQoHG+X3g/9o4RhsUPHFkfr0CFo4Ot2g==", null, false, 60, "288654f4-d6a8-44cc-8905-dab2a3b014b2", false, "maryremo@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Parlor",
@@ -227,33 +226,33 @@ namespace InkInc.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "BaselinePricing", "Biography", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "InstagramHandle", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "ParlorId", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PricePerHour", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "9eb5a457-17b0-4f58-b76d-6f3448575733", 0, 50, "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.", "182192f3-4c66-4c73-b9d9-d1605fb23e2d", "allisonkatecollins@gmail.com", true, "Allison", "@allisonkatecollins", "Collins", false, null, "ALLISONKATECOLLINS@GMAIL.COM", "ALLISONKATECOLLINS@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEM9RTf0ucc/4Gox8oeJFfdCPcR2yDTXudrs2WBzyolT23fVcAMZKnUYEbYmK/sfXwA==", null, false, 80, "7749e9db-9f06-47e5-9a7a-08f7d75d6a71", false, "allisonkatecollins@gmail.com" },
-                    { "d5067774-8cf5-44c1-acba-cdf79c125414", 0, 60, "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.", "e88d8834-25d0-4e78-9172-01d34fb014f8", "asiacarter@gmail.com", true, "Asia", "@asiacarter", "Carter", false, null, "ASIACARTER@GMAIL.COM", "ASIACARTER@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEOluouyIA5otG9ORFcfjflzdF4nWrdvO229ZJsQkF+tzU1oiNNQD4qbDLd21rxypYw==", null, false, 50, "67a7c04f-1f09-4bf5-8f11-07c6160b28e4", false, "asiacarter@gmail.com" },
-                    { "5661114f-a785-4d5c-8ee8-20eb6366190c", 0, 25, "I specialize in black-and-white tattoos of capybaras.", "dc5b2a5f-658d-44c5-8ea9-650cf89a2bed", "brj@gmail.com", true, "Brittany", "@itsbrittany", "Ramos-Janeway", false, null, "BRJ@GMAIL.COM", "BRJ@GMAIL.COM", 2, "AQAAAAEAACcQAAAAEBHqg/DH4O3ydOfFKgBRobkdc4TKVSGLGdOi6NlFY4tPHajzPQP22KdYvavc9gD7dA==", null, false, 50, "f0ce7a14-719d-4390-8ddf-0ecf6937ae81", false, "brj@gmail.com" }
+                    { "4f1e7b06-64d1-419d-b34b-909491fa9dfd", 0, 50, "I've been a tattoo artist for 10 years. I specialize in portrait pieces, particularly of Jeff Goldblum.", "c7449a4a-c7a7-47fa-9073-9a9d7ff3ef3a", "allisonkatecollins@gmail.com", true, "Allison", "@allisonkatecollins", "Collins", false, null, "ALLISONKATECOLLINS@GMAIL.COM", "ALLISONKATECOLLINS@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEK5lvkOPFNYkWBq0G1A7WMm6Y5KiBmjDISbAQN0nYlcV7X21ehg/P5lnVscKyNdMvA==", null, false, 80, "d07f1dc6-b14f-4873-89f5-d897d24f503c", false, "allisonkatecollins@gmail.com" },
+                    { "cf2aceb4-01e7-476a-b758-b536eefb6865", 0, 60, "I am inspired by the energy that bachelorette parties bring to Nashville, so I mostly do wedding themed tattoos.", "b37200f4-52fc-4506-84a8-d3d90dde11b9", "asiacarter@gmail.com", true, "Asia", "@asiacarter", "Carter", false, null, "ASIACARTER@GMAIL.COM", "ASIACARTER@GMAIL.COM", 1, "AQAAAAEAACcQAAAAEInaKdM6JaLLhxOGD/lt6kY+grR0BS68zuI9hEmUBZscX5JwNkK1zewnW65383n4LA==", null, false, 50, "ae3828b9-1f48-4063-aef3-5c43d781802e", false, "asiacarter@gmail.com" },
+                    { "89e69eba-a31c-4966-9755-7fae90033932", 0, 25, "I specialize in black-and-white tattoos of capybaras.", "eec04a6c-5071-4443-94e2-5d9bbeedd1fd", "brj@gmail.com", true, "Brittany", "@itsbrittany", "Ramos-Janeway", false, null, "BRJ@GMAIL.COM", "BRJ@GMAIL.COM", 2, "AQAAAAEAACcQAAAAECLZzuS6wlElQo4dJdIL4Hi0cwy7AvhOi3Hd8KcGmpzu5KoKOIUkmNcUJGvw415n4w==", null, false, 50, "3a395cee-898f-4cd8-9c0e-c3cf4de01345", false, "brj@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Photo",
-                columns: new[] { "Id", "FilePath", "IsDisplayPhoto", "UserId" },
+                columns: new[] { "Id", "FilePath", "UserId" },
                 values: new object[,]
                 {
-                    { 5, "~/images/tenn1.jpg", false, "0402a486-a1f7-4eaf-96ef-66dc25142242" },
-                    { 6, "~/images/tenn2.jpg", false, "0402a486-a1f7-4eaf-96ef-66dc25142242" }
+                    { 5, "~/images/tenn1.jpg", "c19dab41-531c-4849-8b9a-5ba86434b3db" },
+                    { 6, "~/images/tenn2.jpg", "c19dab41-531c-4849-8b9a-5ba86434b3db" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Photo",
-                columns: new[] { "Id", "FilePath", "IsDisplayPhoto", "UserId" },
+                columns: new[] { "Id", "FilePath", "UserId" },
                 values: new object[,]
                 {
-                    { 3, "~/images/jeff1.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
-                    { 4, "~/images/jeff2.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
-                    { 9, "~/images/jeff3.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
-                    { 10, "~/images/jeff4.jpg", false, "9eb5a457-17b0-4f58-b76d-6f3448575733" },
-                    { 7, "~/images/wedding1.jpg", false, "d5067774-8cf5-44c1-acba-cdf79c125414" },
-                    { 8, "~/images/wedding2.jpg", false, "d5067774-8cf5-44c1-acba-cdf79c125414" },
-                    { 1, "~/images/capybara1.jpg", false, "5661114f-a785-4d5c-8ee8-20eb6366190c" },
-                    { 2, "~/images/capybara2.jpg", false, "5661114f-a785-4d5c-8ee8-20eb6366190c" }
+                    { 3, "~/images/jeff1.jpg", "4f1e7b06-64d1-419d-b34b-909491fa9dfd" },
+                    { 4, "~/images/jeff2.jpg", "4f1e7b06-64d1-419d-b34b-909491fa9dfd" },
+                    { 9, "~/images/jeff3.jpg", "4f1e7b06-64d1-419d-b34b-909491fa9dfd" },
+                    { 10, "~/images/jeff4.jpg", "4f1e7b06-64d1-419d-b34b-909491fa9dfd" },
+                    { 7, "~/images/wedding1.jpg", "cf2aceb4-01e7-476a-b758-b536eefb6865" },
+                    { 8, "~/images/wedding2.jpg", "cf2aceb4-01e7-476a-b758-b536eefb6865" },
+                    { 1, "~/images/capybara1.jpg", "89e69eba-a31c-4966-9755-7fae90033932" },
+                    { 2, "~/images/capybara2.jpg", "89e69eba-a31c-4966-9755-7fae90033932" }
                 });
 
             migrationBuilder.CreateIndex(
