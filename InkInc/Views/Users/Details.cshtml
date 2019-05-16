@@ -21,7 +21,7 @@
 
 @if (Model.User.ParlorId != null)
 {
-    <h1>@Html.DisplayFor(model => model.User.FullName)</h1>
+    <h1 class="title">@Html.DisplayFor(model => model.User.FullName)</h1>
 
     <h4><a asp-controller="Parlors" asp-action="Details" asp-route-id="@Model.User.Parlor.ParlorId">@Html.DisplayFor(model => model.User.Parlor.Name)</a></h4>
 }
