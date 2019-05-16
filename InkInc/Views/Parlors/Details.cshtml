@@ -19,7 +19,7 @@
     </td>
 }
 
-<h1>@Html.DisplayFor(model => model.Name)</h1>
+<h1 class="title">@Html.DisplayFor(model => model.Name)</h1>
 
 <div>
     <hr />
@@ -55,7 +55,7 @@
         {
             <tr>
                 <td>
-                    <a asp-controller="Users" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+                    <a class="text-dark" asp-controller="Users" asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
                 </td>
             </tr>
         }
