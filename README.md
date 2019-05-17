@@ -6,7 +6,7 @@ Artists are able to register and curate their own page, updating it at any point
 
 ## Testing Locally
 1. Clone this repo: `git@github.com:allisonkatecollins/ink-inc.git`
-2. From the command line run `InIinc.sln` to open Visual Studio
+2. From the command line run `InkInc.sln` to open Visual Studio
 3. Open Visual Studio and build + run InkInc 
 3. Browse as a tattoo seeker or register as a tattoo artist
  
