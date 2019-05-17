@@ -25,6 +25,7 @@ namespace InkInc.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
 
         //======= parlor dropdown list ===========
+        //called in register.cshtml
         public List<SelectListItem> PopulateParlorsDropDownList()
         {
             //access db
