@@ -1,10 +1,7 @@
 # Ink Inc.
-<<<<<<< HEAD
 
 <img src="~screenshot.png" alt="Screenshot" title="Where Art Thou?" width="1000px">
 
-=======
->>>>>>> dae4db5aba7d4e86693547d5eacbe009a78a8af3
 Ink Inc. is an app designed to link people looking for tattoos with the artists and parlors in a given area. <br/>
 Those who are looking do not need to register, but can browse by artist or parlor and search by city or state. Each artist's page includes a short biography including style and thematic preferences, pricing information, contact information, portfolio photos, and a link to their parlor's page. <br/>
 Artists are able to register and curate their own page, updating it at any point. Upon registration they can choose their parlor from a drop-down menu, or create a new page later if theirs is not listed. Artists can upload as many photo files as they want and are able to delete them as they please. They are also able to edit the parlor which with they are associated; each parlor's page includes a list of all artists who work there. 
@@ -25,10 +22,6 @@ Artists are able to register and curate their own page, updating it at any point
 ## Thanks
 - This app was made possible with the support of the wonderful people at Nashville Software School, particularly my fellow students in Cohort 29
 - Thanks also to my incredible instructors: Andy Collins, Leah Hoefling, and Madi Peper, for your continued encouragement and troubleshooting assistance
-<<<<<<< HEAD
 
-
-=======
->>>>>>> dae4db5aba7d4e86693547d5eacbe009a78a8af3
 
 
